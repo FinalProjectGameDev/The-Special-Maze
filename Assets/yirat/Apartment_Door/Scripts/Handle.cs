@@ -33,21 +33,11 @@ public class Handle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInZone)
+        if (playerInZone && this.gameObject.activeSelf)
         {
-            if (this.gameObject.activeSelf)
-            {
-                txtToDisplay.GetComponent<Text>().text = "Press 'T' to PickUp the handle";
-                handleCollider.enabled = true;
-                Debug.Log("this.gameObject.activeSelf (active) take" + this.gameObject.activeSelf);
-            }
-
-            else
-            {
-                txtToDisplay.GetComponent<Text>().text = "Press 'T' to return the handle";
-                Debug.Log("this.gameObject.activeSelf (NOTactive) return" + this.gameObject.activeSelf);
-                handleCollider.enabled = false;
-            }
+            txtToDisplay.GetComponent<Text>().text = "Press 'T' to PickUp the handle";
+            handleCollider.enabled = true;
+            Debug.Log("this.gameObject.activeSelf (active) take" + this.gameObject.activeSelf);
         }
 
         if (Input.GetKeyDown(KeyCode.T) && playerInZone)
@@ -58,6 +48,8 @@ public class Handle : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Debug.Log("this.gameObject.activeSelf (NOTactive)" + this.gameObject.activeSelf);
+                playerInZone = false;
+                txtToDisplay.SetActive(false);
                 DC.gotKey = true;
             }
 
