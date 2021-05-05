@@ -20,7 +20,7 @@ public class MazeRenderer : MonoBehaviour
     [SerializeField]
     private Transform floorPrefab = null;
 
-    public NavMeshSurface surface;
+    //public NavMeshSurface surface;
 
     // Start is called before the first frame update
     void Start()
@@ -28,22 +28,30 @@ public class MazeRenderer : MonoBehaviour
         var maze = MazeGenerator.Generate();
         Draw(maze);
 
-        surface.BuildNavMesh();
+        //surface.BuildNavMesh();
     }
 
     private void Draw(WallState[,] maze)
     {
         var size1 = size - WallThickness;
-        var floor = Instantiate(floorPrefab, transform);
-        floor.localScale = new Vector3(40 * size, 0.1f, 25 * size);
-        floor.position = new Vector3(0, -WallHeight / 2, 0);
+        //var floor = Instantiate(floorPrefab, transform);
+        //floor.localScale = new Vector3(30 * size, 0.1f, 20 * size);
+        //floor.position = new Vector3(0, -WallHeight / 2, 0);
 
-        for (int i = 0; i < 40; ++i)
+        for (int i = 0; i < 30; ++i)
         {
-            for (int j = 0; j < 25; ++j)
+            for (int j = 0; j < 20; ++j)
             {
                 var cell = maze[i, j];
-                var position = new Vector3((-19.5f + i) * size, 0, (-12 + j) * size);
+                var position = new Vector3((-14.5f + i) * size, 0, (-9.5f + j) * size);
+
+                if (cell.HasFlag(WallState.NOWAY))
+                {
+                    var floor = Instantiate(floorPrefab, transform);
+                    //floor.localScale = new Vector3(30 * size, 0.1f, 20 * size);
+                    floor.position = position;
+                    floor.GetComponent<Renderer>().material.color = Color.blue;
+                }
 
                 if (cell.HasFlag(WallState.UP))
                 {
@@ -68,7 +76,7 @@ public class MazeRenderer : MonoBehaviour
                     }
                 }
 
-                if (i == 40 - 1)
+                if (i == 30 - 1)
                 {
                     if (cell.HasFlag(WallState.RIGHT))
                     {
