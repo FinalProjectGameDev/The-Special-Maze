@@ -10,10 +10,14 @@ public class Minimap : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 newPos = player.position;
-        newPos.y = transform.position.y;
-        transform.position = newPos;
+        if (player)
+        {
+            Vector3 newPos = player.position;
+            newPos.y = transform.position.y;
+            transform.position = newPos;
 
-        transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
+            transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
+        }
+       
     }
 }

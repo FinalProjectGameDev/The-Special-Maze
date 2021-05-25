@@ -18,15 +18,18 @@ public class MazeRenderer : MonoBehaviour
     [SerializeField]
     private Transform wallPrefab = null;
 
-    [SerializeField]
-    private Transform floorPrefab = null;
+    //[SerializeField]
+    //private Transform floorPrefab = null;
 
     [Header("Prefarbs to locate")]
-    [SerializeField]
-    private GameObject Player = null;
+   // [SerializeField]
+    //private GameObject Player = null;
     
     [SerializeField]
     private GameObject Dog = null;
+
+    [SerializeField]
+    private GameObject Light = null;
 
     [SerializeField]
     private GameObject Dictionary = null;
@@ -45,7 +48,7 @@ public class MazeRenderer : MonoBehaviour
 
     bool[] located = {false, false, false, false, false, false};
 
-    //public NavMeshSurface surface;
+    public NavMeshSurface surface;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +56,7 @@ public class MazeRenderer : MonoBehaviour
         var maze = MazeGenerator.Generate();
         Draw(maze);
 
-        //surface.BuildNavMesh();
+        surface.BuildNavMesh();
     }
 
     private void Draw(WallState[,] maze)
@@ -63,7 +66,7 @@ public class MazeRenderer : MonoBehaviour
         //floor.localScale = new Vector3(30 * size, 0.1f, 20 * size);
         //floor.position = new Vector3(0, -WallHeight / 2, 0);
 
-        Player.transform.position = new Vector3(-14.5f  * size, 0, -9.5f * size);
+       // Player.transform.position = new Vector3(-14.5f  * size, 0, -9.5f * size);
 
 
         for (int i = 0; i < 30; ++i)
@@ -73,13 +76,48 @@ public class MazeRenderer : MonoBehaviour
                 var cell = maze[i, j];
                 var position = new Vector3((-14.5f + i) * size, 0, (-9.5f + j) * size);
 
+                if  (i % 2 == 1 && j % 2 == 0)
+                {
+                    var light = Instantiate(Light, transform);
+                    light.transform.position = position;
+                }
+                if (i % 2 == 0 && j % 2 == 1) 
+                {
+                    var light = Instantiate(Light, transform);
+                    light.transform.position = position;
+                    light.transform.eulerAngles = new Vector3(0, 90, 0);
+                }
+
+                var corner1 = Instantiate(wallPrefab, transform) as Transform;
+                corner1.position = position + new Vector3(size / 2, 0, size / 2);
+                corner1.localScale = new Vector3(WallThickness, WallHeight, WallThickness);
+
+                if(i == 0)
+                {
+                    var corner2 = Instantiate(wallPrefab, transform) as Transform;
+                    corner2.position = position - new Vector3(size / 2, 0, size / 2);
+                    corner2.localScale = new Vector3(WallThickness, WallHeight, WallThickness);
+                    corner2.GetComponent<Renderer>().material.color = Color.red;
+                }
+                if (j == 0)
+                {
+                    var corner3 = Instantiate(wallPrefab, transform) as Transform;
+                    corner3.position = position + new Vector3(size / 2, 0, -size / 2);
+                    corner3.localScale = new Vector3(WallThickness, WallHeight, WallThickness);
+                }
+
+
                 if (cell.HasFlag(WallState.NOWAY))
                 {
                     if(i>=5 && i<=9 && j>=0 && j<=4 && !located[0])
                     {
                         located[0] = true;
                         var dog = Instantiate(Dog, transform);
-                        dog.transform.position = position;
+                        dog.transform.position = position - new Vector3(0, 0.95f, 0);
+                        if(!cell.HasFlag(WallState.RIGHT)) dog.transform.eulerAngles = new Vector3(0, 90, 0);
+                        else if(!cell.HasFlag(WallState.DOWN)) dog.transform.eulerAngles = new Vector3(0, 180, 0);
+                        else if(!cell.HasFlag(WallState.LEFT)) dog.transform.eulerAngles = new Vector3(0, 270, 0);
+                        //if(cell.HasFlag(WallState.UP)) dog.transform.eulerAngles = new Vector3(0, 90, 0);
                     }
                     else if (i >= 0 && i <= 4 && j >= 5 && j <= 9 && !located[1])
                     {
@@ -111,13 +149,13 @@ public class MazeRenderer : MonoBehaviour
                         var hnd = Instantiate(Hendle, transform);
                         hnd.transform.position = position;
                     }
-                    else
-                    {
-                        var floor = Instantiate(floorPrefab, transform);
+                    //else
+                    //{
+                    //    var floor = Instantiate(floorPrefab, transform);
                         //floor.localScale = new Vector3(30 * size, 0.1f, 20 * size);
-                        floor.position = position;
-                        floor.GetComponent<Renderer>().material.color = Color.blue;
-                    }
+                    //    floor.position = position;
+                    //    floor.GetComponent<Renderer>().material.color = Color.blue;
+                   // }
 
                 }
 
@@ -125,7 +163,7 @@ public class MazeRenderer : MonoBehaviour
                 {
                     var topWall = Instantiate(wallPrefab, transform) as Transform;
                     topWall.position = position + new Vector3(0, 0, size / 2);
-                    topWall.localScale = new Vector3(size + WallThickness, WallHeight, WallThickness);
+                    topWall.localScale = new Vector3(size - WallThickness, WallHeight, WallThickness);
                     if (cell.HasFlag(WallState.UK))
                     {
                         topWall.GetComponent<Renderer>().material.color = Color.red;
@@ -136,7 +174,7 @@ public class MazeRenderer : MonoBehaviour
                 {
                     var leftWall = Instantiate(wallPrefab, transform) as Transform;
                     leftWall.position = position + new Vector3(-size / 2, 0, 0);
-                    leftWall.localScale = new Vector3(size + WallThickness, WallHeight, WallThickness);
+                    leftWall.localScale = new Vector3(size - WallThickness, WallHeight, WallThickness);
                     leftWall.eulerAngles = new Vector3(0, 90, 0);
                     if (cell.HasFlag(WallState.LK))
                     {
@@ -150,7 +188,7 @@ public class MazeRenderer : MonoBehaviour
                     {
                         var rightWall = Instantiate(wallPrefab, transform) as Transform;
                         rightWall.position = position + new Vector3(+size / 2, 0, 0);
-                        rightWall.localScale = new Vector3(size + WallThickness, WallHeight, WallThickness);
+                        rightWall.localScale = new Vector3(size - WallThickness, WallHeight, WallThickness);
                         rightWall.eulerAngles = new Vector3(0, 90, 0);
                     }
                 }
@@ -161,7 +199,7 @@ public class MazeRenderer : MonoBehaviour
                     {
                         var bottomWall = Instantiate(wallPrefab, transform) as Transform;
                         bottomWall.position = position + new Vector3(0, 0, -size / 2);
-                        bottomWall.localScale = new Vector3(size + WallThickness, WallHeight, WallThickness);
+                        bottomWall.localScale = new Vector3(size - WallThickness, WallHeight, WallThickness);
                     }
                 }
             }
