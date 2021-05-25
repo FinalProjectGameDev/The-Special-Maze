@@ -27,6 +27,7 @@ public class MusicNoteCodes : MonoBehaviour
     public void C_Note_Play()
     {
         C_Note.Play();
+      
     }
 
     public void D_Note_Play()
