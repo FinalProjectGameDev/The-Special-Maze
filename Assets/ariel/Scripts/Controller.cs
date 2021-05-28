@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     //public Camera cam;
 
     public NavMeshAgent agent;
+    public Animator anim;
 
     //public Transform target;
 
@@ -16,6 +17,7 @@ public class Controller : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         onDog = true;
+        anim.SetBool("Found", true);
     }
 
     void OnTriggerExit(Collider other)
@@ -26,12 +28,13 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("Move", agent.velocity.magnitude);
         if (onDog)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //onDog = false;
-                agent.SetDestination(new Vector3(-33,0,3.8f));
+                agent.SetDestination(new Vector3(-33,0,2f));
                 //this.gameObject.SetActive(false);
                 //Box.GetComponent<LightSwitch>().hasPin = true;
                 //if (Box.GetComponent<LightSwitch>().LastSwitch != null) Box.GetComponent<LightSwitch>().LastSwitch.SetActive(true);

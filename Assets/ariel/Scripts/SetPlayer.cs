@@ -6,7 +6,12 @@ public class SetPlayer : MonoBehaviour
 {
 
     string _currentSelectedCharName;
-    public GameObject toLoad;
+    //public GameObject toLoad;
+
+    public GameObject Robot;
+    public GameObject Ethan;
+    public GameObject Poly;
+    public GameObject Test;
 
     // Start is called before the first frame update
     void Start()
@@ -16,20 +21,27 @@ public class SetPlayer : MonoBehaviour
         switch (_currentSelectedCharName)
         {
             case "Robot":
-                toLoad.GetComponent<Renderer>().material.color = Color.red;
-                toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                Robot.SetActive(true);
+                //toLoad.GetComponent<Renderer>().material.color = Color.red;
+                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
                 break;
             case "Ethan":
-                toLoad.GetComponent<Renderer>().material.color = Color.blue;
-                toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.blue);
+                Ethan.SetActive(true);
+
+                //toLoad.GetComponent<Renderer>().material.color = Color.blue;
+                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.blue);
                 break;
             case "Low Poly Char":
-                toLoad.GetComponent<Renderer>().material.color = Color.green;
-                toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+                Poly.SetActive(true);
+
+                //toLoad.GetComponent<Renderer>().material.color = Color.green;
+                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
                 break;
             case "Test":
-                toLoad.GetComponent<Renderer>().material.color = Color.cyan;
-                toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.cyan);
+                Test.SetActive(true);
+
+                //toLoad.GetComponent<Renderer>().material.color = Color.cyan;
+                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.cyan);
                 break;
         }
 
