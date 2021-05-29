@@ -2030,81 +2030,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481471884}
   m_CullTransparentMesh: 0
---- !u!1 &502677589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 502677591}
-  - component: {fileID: 502677590}
-  - component: {fileID: 502677592}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &502677590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502677589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420d5f68ba1fd5747b185d64c60712b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  C_Note: {fileID: 1272745831}
-  D_Note: {fileID: 101250306}
-  E_Note: {fileID: 633111411}
-  F_Note: {fileID: 1559675689}
-  G_Note: {fileID: 770041308}
-  A_Note: {fileID: 25576705}
-  B_Note: {fileID: 1136059008}
-  C1_Note: {fileID: 2058367306}
-  D1_Note: {fileID: 252788308}
-  E1_Note: {fileID: 1388261178}
-  F1_Note: {fileID: 527579982}
-  CS_Note: {fileID: 637454139}
-  DS_Note: {fileID: 90176051}
-  FS_Note: {fileID: 530022715}
-  GS_Note: {fileID: 2065413078}
-  Bb_Note: {fileID: 56851356}
-  CS1_Note: {fileID: 1123874765}
-  DS1_Note: {fileID: 72168511}
---- !u!4 &502677591
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502677589}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 300.5, y: 221.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &502677592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502677589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159254e08d751304bb128c5608149397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: []
 --- !u!1 &527579980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,7 +5312,7 @@ Transform:
   - {fileID: 1123874764}
   - {fileID: 72168510}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548262880
 GameObject:
