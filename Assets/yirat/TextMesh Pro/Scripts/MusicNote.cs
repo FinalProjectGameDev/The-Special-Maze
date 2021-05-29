@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MusicNote : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] 
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()

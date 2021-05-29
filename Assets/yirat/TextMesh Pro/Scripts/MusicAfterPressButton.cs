@@ -1,26 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicAfterPressButton : MonoBehaviour
 {
-    public AudioSource firstNote;
-    public AudioSource secondNote;
-    public AudioSource thirdNote;
-    public AudioSource fourthNote;
 
+    [SerializeField]
+    public AudioSource[] sound;
+
+    void Start()
+    {
+        gameObject.GetComponent<Button>().onClick.AddListener(RoutineWrap);
+    }
     public void RoutineWrap()
     {
         StartCoroutine(playSound());
     }
     IEnumerator playSound()
     {
-        firstNote.Play();
-        yield return new WaitForSeconds(firstNote.clip.length);
-        secondNote.Play();
-        yield return new WaitForSeconds(secondNote.clip.length);
-        thirdNote.Play();
-        yield return new WaitForSeconds(thirdNote.clip.length);
-        fourthNote.Play();
+        for(int i = 0; i<sound.Length; i++)
+        {
+            sound[i].Play();
+            yield return new WaitForSeconds(sound[i].clip.length);
+        }
     }
 }
