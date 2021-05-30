@@ -40,7 +40,7 @@ public class Controller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //onDog = false;
-                agent.SetDestination(new Vector3(-33,0,2f));
+                agent.SetDestination(new Vector3(74,0,30));
                 //this.gameObject.SetActive(false);
                 //Box.GetComponent<LightSwitch>().hasPin = true;
                 //if (Box.GetComponent<LightSwitch>().LastSwitch != null) Box.GetComponent<LightSwitch>().LastSwitch.SetActive(true);
@@ -66,24 +66,25 @@ public class Controller : MonoBehaviour
                 agent.isStopped = true;
             }
         }
-        //if (GetComponent<Renderer>().isVisible)
-        //{
-        //    //Visible code here
-        //    agent.isStopped = false;
-        //}
-        //else
-        //{
-        //    //Not visible code here
-        //    agent.isStopped = true;
+        
+            //if (GetComponent<Renderer>().isVisible)
+            //{
+            //    //Visible code here
+            //    agent.isStopped = false;
+            //}
+            //else
+            //{
+            //    //Not visible code here
+            //    agent.isStopped = true;
 
-        //}
-    }
+            //}
+        }
 
     void OnGUI()
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
         gustyle.fontSize = 20;
-        if (onDog)
+        if (onDog && agent.velocity == Vector3.zero)
         {
             GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to Get the switch", gustyle);
         }

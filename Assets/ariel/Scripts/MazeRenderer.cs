@@ -113,7 +113,7 @@ public class MazeRenderer : MonoBehaviour
                     {
                         located[0] = true;
                         var dog = Instantiate(Dog, transform);
-                        dog.transform.position = position - new Vector3(0, 0.95f, 0);
+                        dog.transform.position = position - new Vector3(0, 1.45f, 0);
                         if(!cell.HasFlag(WallState.RIGHT)) dog.transform.eulerAngles = new Vector3(0, 90, 0);
                         else if(!cell.HasFlag(WallState.DOWN)) dog.transform.eulerAngles = new Vector3(0, 180, 0);
                         else if(!cell.HasFlag(WallState.LEFT)) dog.transform.eulerAngles = new Vector3(0, 270, 0);
