@@ -19,7 +19,7 @@ public class LoadGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player2").transform;
 
         //retrieve which slot is loaded
         #if !EMM_ES2

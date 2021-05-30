@@ -9,12 +9,18 @@ public class Controller : MonoBehaviour
 
     public NavMeshAgent agent;
     public Animator anim;
+    public Transform player;
 
     //public Transform target;
 
     public bool onDog; //Change to private
 
-    void OnTriggerEnter(Collider other)
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+        void OnTriggerEnter(Collider other)
     {
         onDog = true;
         anim.SetBool("Found", true);
@@ -44,6 +50,33 @@ public class Controller : MonoBehaviour
                 //soundImage.SetActive(true);
             }
         }
+        //var hit : RaycastHit;
+        RaycastHit hit;
+        var rayDirection = player.position - transform.position;
+        if (Physics.Raycast(transform.position, rayDirection, out hit))
+        {
+            if (hit.transform == player)
+            {
+                // enemy can see the player!
+                agent.isStopped = false;
+            }
+            else
+            {
+                // there is something obstructing the view
+                agent.isStopped = true;
+            }
+        }
+        //if (GetComponent<Renderer>().isVisible)
+        //{
+        //    //Visible code here
+        //    agent.isStopped = false;
+        //}
+        //else
+        //{
+        //    //Not visible code here
+        //    agent.isStopped = true;
+
+        //}
     }
 
     void OnGUI()
