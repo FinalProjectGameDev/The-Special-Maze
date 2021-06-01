@@ -96,7 +96,7 @@ public class MazeRenderer : MonoBehaviour
                 {
                     var corner2 = Instantiate(wallPrefab, transform) as Transform;
                     corner2.position = position - new Vector3(size / 2, 0, size / 2);
-                    corner2.localScale = new Vector3(WallThickness, WallHeight, WallThickness);
+                    corner2.localScale = new Vector3(WallThickness+0.1f, WallHeight, WallThickness + 0.1f);
                     corner2.GetComponent<Renderer>().material.color = Color.red;
                 }
                 if (j == 0)
