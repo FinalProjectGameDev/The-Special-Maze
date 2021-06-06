@@ -16,5 +16,6 @@ public class MusicNote : MonoBehaviour
     public void notePlay()
     {
         audioSource.Play();
+        PianoDoorController.setNotes(audioSource);
     }
 }
