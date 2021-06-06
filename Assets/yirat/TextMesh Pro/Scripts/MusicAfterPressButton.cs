@@ -71,6 +71,5 @@ public class MusicAfterPressButton : MonoBehaviour
         {
             GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to play sound", gustyle);
         }
-
     }
 }

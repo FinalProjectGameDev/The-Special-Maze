@@ -1080,6 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1123874765}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &47414004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 101250306}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &56851354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,6 +2658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2058367306}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &237857193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 530022715}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &299593753
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,6 +4810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 770041308}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &692179032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,6 +5057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1136059008}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &720446871
 GameObject:
   m_ObjectHideFlags: 0
@@ -5216,6 +5222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 56851356}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &770041306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 72168511}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &825958752
 GameObject:
   m_ObjectHideFlags: 0
@@ -5798,6 +5806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2065413078}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &867832098
 GameObject:
   m_ObjectHideFlags: 0
@@ -6301,6 +6310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1272745831}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1088656821
 GameObject:
   m_ObjectHideFlags: 0
@@ -6891,6 +6901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 252788308}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1176327141
 GameObject:
   m_ObjectHideFlags: 0
@@ -7306,6 +7317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 527579982}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1272745829
 GameObject:
   m_ObjectHideFlags: 0
@@ -8645,6 +8657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 633111411}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1602756983
 GameObject:
   m_ObjectHideFlags: 0
@@ -8778,6 +8791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1388261178}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1606691919
 GameObject:
   m_ObjectHideFlags: 0
@@ -9232,6 +9246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1559675689}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1640364064
 GameObject:
   m_ObjectHideFlags: 0
@@ -9757,6 +9772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 25576705}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1723868327
 GameObject:
   m_ObjectHideFlags: 0
@@ -10097,6 +10113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 90176051}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1875470279
 GameObject:
   m_ObjectHideFlags: 0
@@ -10511,6 +10528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 637454139}
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &1973424776
 GameObject:
   m_ObjectHideFlags: 0
@@ -12130,6 +12148,7 @@ MonoBehaviour:
   keyGameObject: {fileID: 0}
   txtToDisplay: {fileID: 0}
   doorHandle: {fileID: 0}
+  fourSounds: []
   correctAnswer: {fileID: 77071117}
   wrongAnswer: {fileID: 835242802}
 --- !u!1 &2890964734634480386

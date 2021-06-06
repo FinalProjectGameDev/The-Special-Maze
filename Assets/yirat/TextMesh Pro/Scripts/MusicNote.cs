@@ -7,6 +7,8 @@ public class MusicNote : MonoBehaviour
 {
     [SerializeField] 
     AudioSource audioSource;
+    [SerializeField]
+    PianoDoorController pianoDoorController;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,6 @@ public class MusicNote : MonoBehaviour
     public void notePlay()
     {
         audioSource.Play();
-        PianoDoorController.setNotes(audioSource);
+        pianoDoorController.setNotes(audioSource);
     }
 }

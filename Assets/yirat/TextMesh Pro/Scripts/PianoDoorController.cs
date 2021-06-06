@@ -5,10 +5,7 @@ public class PianoDoorController : MonoBehaviour
 {
     public bool keyNeeded = false;              //Is key needed for the door
     public bool gotKey;                  //Has the player acquired key
-    public bool HandleConnected = false;
     public GameObject keyGameObject;            //If player has Key,  assign it here
-    public GameObject txtToDisplay;             //Display the information about how to close/open the door
-    public GameObject doorHandle;               //The handle on the door
 
     private bool playerInZone;                  //Check if the player is in the zone
     private bool doorOpened;                    //Check if door is currently opened or not
@@ -16,7 +13,7 @@ public class PianoDoorController : MonoBehaviour
     private Animation doorAnim;
     private BoxCollider doorCollider;           //To enable the player to go through the door if door is opened else block him
 
-    public static AudioSource[] fourSounds;
+    private AudioSource[] fourSounds = new AudioSource[4];
     public static int index;
     [SerializeField]
     public AudioSource correctAnswer;
@@ -40,33 +37,20 @@ public class PianoDoorController : MonoBehaviour
         gotKey = false;
         doorOpened = false;                     //Is the door currently opened
         playerInZone = false;                   //Player not in zone
-        HandleConnected = false;
         doorState = DoorState.Closed;           //Starting state is door closed
-
-        txtToDisplay.SetActive(false);
-        doorHandle.SetActive(false);
 
         doorAnim = transform.parent.gameObject.GetComponent<Animation>();
         doorCollider = transform.parent.gameObject.GetComponent<BoxCollider>();
-
-        //If Key is needed and the KeyGameObject is not assigned, stop playing and throw error
-        //if keyNeeded && keyGameObject == null)
-        //{
-        //    //UnityEditor.EditorApplication.isPlaying = false;
-        //    Debug.LogError("Assign Key GameObject");
-        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        txtToDisplay.SetActive(true);
         playerInZone = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         playerInZone = false;
-        txtToDisplay.SetActive(false);
     }
 
     private void Update()
@@ -76,19 +60,16 @@ public class PianoDoorController : MonoBehaviour
         {
             if (doorState == DoorState.Opened)
             {
-                txtToDisplay.GetComponent<Text>().text = "Press 'E' to Close";
                 doorCollider.enabled = false;
             }
             else if (doorState == DoorState.Closed)
             {
                 if (gotKey)
                 {
-                    txtToDisplay.GetComponent<Text>().text = "Press E to Open";
                     doorCollider.enabled = true;
                 }
                 else
                 {
-                    txtToDisplay.GetComponent<Text>().text = "Need to repeat the music";
                     doorCollider.enabled = true;
                 }
             }
@@ -103,7 +84,7 @@ public class PianoDoorController : MonoBehaviour
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
             }
-            if (doorState == DoorState.Closed && gotKey && !doorAnim.isPlaying && HandleConnected)
+            if (doorState == DoorState.Closed && gotKey && !doorAnim.isPlaying)
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
@@ -113,7 +94,7 @@ public class PianoDoorController : MonoBehaviour
                 doorAnim.Play("Door_Close");
                 doorState = DoorState.Closed;
             }
-            else if (doorState == DoorState.Jammed && gotKey && !doorAnim.isPlaying && HandleConnected)
+            else if (doorState == DoorState.Jammed && gotKey && !doorAnim.isPlaying)
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
@@ -121,24 +102,48 @@ public class PianoDoorController : MonoBehaviour
         }
         if(index == 3)
         {
+            index = -1;
+            gotKey = true;
             for (int i = 0; i < fourSounds.Length; i++)
             {
                 if (!fourSounds[i].Equals(MusicAfterPressButton.fourSounds[i]))
                 {
                     gotKey = false;
                     wrongAnswer.Play();
-                    break;
                 }
-                gotKey = true;
-                correctAnswer.Play();
             }
+            if (gotKey) { correctAnswer.Play(); }           
         }
     }
 
-    public static void setNotes(AudioSource audioSource)
+    public void setNotes(AudioSource audioSource)
     {
-        index = (index + 1) % 4;
+        index += 1 ;
+        Debug.Log(index);
         fourSounds[index] = audioSource;
     }
-        
+
+    void OnGUI()
+    {
+        GUIStyle gustyle = new GUIStyle(GUI.skin.box);
+        gustyle.fontSize = 20;
+        if (playerInZone)
+        {
+            if (doorState == DoorState.Opened)
+            {
+                GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press 'E' to Close", gustyle);
+            }
+            else if (doorState == DoorState.Closed)
+            {
+                if (gotKey)
+                {
+                    GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to Open", gustyle);
+                }
+                else
+                {
+                    GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Need to repeat the music", gustyle);
+                }
+            }
+        }
+    }
 }
