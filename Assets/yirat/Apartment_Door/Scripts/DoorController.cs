@@ -7,7 +7,6 @@ public class DoorController : MonoBehaviour
     public bool gotKey;                  //Has the player acquired key
     public bool HandleConnected = false;
     public GameObject keyGameObject;            //If player has Key,  assign it here
-    public GameObject txtToDisplay;             //Display the information about how to close/open the door
     public GameObject doorHandle;               //The handle on the door
 
     private bool playerInZone;                  //Check if the player is in the zone
@@ -36,7 +35,6 @@ public class DoorController : MonoBehaviour
         HandleConnected = false;
         doorState = DoorState.Closed;           //Starting state is door closed
 
-        txtToDisplay.SetActive(false);
         doorHandle.SetActive(false);
 
         doorAnim = transform.parent.gameObject.GetComponent<Animation>();
@@ -52,14 +50,12 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        txtToDisplay.SetActive(true);
         playerInZone = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         playerInZone = false;
-        txtToDisplay.SetActive(false);
     }
 
     private void Update()
@@ -69,7 +65,6 @@ public class DoorController : MonoBehaviour
         {
             if (doorState == DoorState.Opened)
             {
-                txtToDisplay.GetComponent<Text>().text = "Press 'E' to Close";
                 doorCollider.enabled = false;
             }
             else if (doorState == DoorState.Closed)
@@ -78,17 +73,11 @@ public class DoorController : MonoBehaviour
                 {
                     if (HandleConnected)
                     {
-                        txtToDisplay.GetComponent<Text>().text = "Press E to Open";
                         doorCollider.enabled = true;
-                    }
-                    else
-                    {
-                        txtToDisplay.GetComponent<Text>().text = "Press T to Connect The Hendle";
                     }
                 }
                 else
                 {
-                    txtToDisplay.GetComponent<Text>().text = "Needs Handle";
                     doorCollider.enabled = true;
                 }
             }   
@@ -122,6 +111,37 @@ public class DoorController : MonoBehaviour
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
+            }
+        }
+    }
+
+    void OnGUI()
+    {
+        GUIStyle gustyle = new GUIStyle(GUI.skin.box);
+        gustyle.fontSize = 20;
+        if (playerInZone)
+        {
+            if (doorState == DoorState.Opened)
+            {
+                GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press 'E' to Close", gustyle);
+            }
+            else if (doorState == DoorState.Closed)
+            {
+                if (gotKey)
+                {
+                    if (HandleConnected)
+                    {
+                        GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to Open", gustyle);
+                    }
+                    else
+                    {
+                        GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press T to Connect The Hendle", gustyle);
+                    }
+                }
+                else
+                {
+                    GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Needs Handle", gustyle);
+                }
             }
         }
     }
