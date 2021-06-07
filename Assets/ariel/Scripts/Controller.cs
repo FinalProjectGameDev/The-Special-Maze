@@ -20,7 +20,7 @@ public class Controller : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-        void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         onDog = true;
         anim.SetBool("Found", true);
@@ -39,46 +39,30 @@ public class Controller : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                //onDog = false;
-                agent.SetDestination(new Vector3(74,0,30));
-                //this.gameObject.SetActive(false);
-                //Box.GetComponent<LightSwitch>().hasPin = true;
-                //if (Box.GetComponent<LightSwitch>().LastSwitch != null) Box.GetComponent<LightSwitch>().LastSwitch.SetActive(true);
-                //Box.GetComponent<LightSwitch>().LastSwitch = this.gameObject;
-                //backgroundSound.Pause();
-                //foundBox.Play();
-                //soundImage.SetActive(true);
+                agent.ResetPath();
+                agent.SetDestination(new Vector3(-47.5f,-1,-2));
             }
         }
-        //var hit : RaycastHit;
-        RaycastHit hit;
-        var rayDirection = player.position - transform.position;
-        if (Physics.Raycast(transform.position, rayDirection, out hit))
+        if (player)
         {
-            if (hit.transform == player)
+            RaycastHit hit;
+            var rayDirection = player.position - transform.position;
+            if (Physics.Raycast(transform.position, rayDirection, out hit))
             {
-                // enemy can see the player!
-                agent.isStopped = false;
-            }
-            else
-            {
-                // there is something obstructing the view
-                agent.isStopped = true;
+                if (hit.transform == player)
+                {
+                    // enemy can see the player!
+                    agent.isStopped = false;
+                }
+                else
+                {
+                    // there is something obstructing the view
+                    agent.isStopped = true;
+                }
             }
         }
         
-            //if (GetComponent<Renderer>().isVisible)
-            //{
-            //    //Visible code here
-            //    agent.isStopped = false;
-            //}
-            //else
-            //{
-            //    //Not visible code here
-            //    agent.isStopped = true;
-
-            //}
-        }
+    }
 
     void OnGUI()
     {
@@ -89,21 +73,5 @@ public class Controller : MonoBehaviour
             GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to Get the switch", gustyle);
         }
     }
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-    //        RaycastHit hit;
-
-    //        if(Physics.Raycast(ray,out hit))
-    //        {
-    //            agent.SetDestination(hit.point);
-    //        }
-    //    }
-    //}
-
 
 }

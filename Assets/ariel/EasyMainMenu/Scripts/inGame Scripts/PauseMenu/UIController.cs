@@ -93,8 +93,8 @@ public class UIController : MonoBehaviour {
                 allUI[i].gameObject.SetActive(false);
         }
 
-        lookX.enabled = false;
-        lookY.enabled = false;
+        //lookX.enabled = false;
+        //lookY.enabled = false;
 
         saveMenu.SetActive(false);
         pauseMenu.SetActive(true);

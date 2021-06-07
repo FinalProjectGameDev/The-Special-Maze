@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 public class SetPlayer : MonoBehaviour
@@ -9,54 +10,50 @@ public class SetPlayer : MonoBehaviour
     //public GameObject toLoad;
 
     public Camera cam;
+    public Camera focuscam;
+    public Camera camWheel;
+    public Camera minimap;
 
-    public GameObject Robot;
-    public GameObject Ethan;
-    public GameObject Poly;
-    public GameObject Test;
+    public GameObject Deaf;
+    public GameObject Parkinson;
+    public GameObject Blindness;
+    public GameObject Wheelchair;
 
     // Start is called before the first frame update
     void Start()
     {
-        _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Robot");
+        _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+        Transform mm_player = minimap.GetComponent<Minimap>().player;
 
         switch (_currentSelectedCharName)
         {
-            case "Robot":
-                Robot.SetActive(true);
-                //toLoad.GetComponent<Renderer>().material.color = Color.red;
-                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+            case "Deaf":
+                Deaf.SetActive(true);
+                cam.gameObject.SetActive(true);
+                minimap.GetComponent<Minimap>().player = Deaf.transform;
                 break;
-            case "Ethan":
-                Ethan.SetActive(true);
+            case "Parkinson":
+                Parkinson.SetActive(true);
+                cam.gameObject.SetActive(true);
+                minimap.GetComponent<Minimap>().player = Parkinson.transform;
 
-                //toLoad.GetComponent<Renderer>().material.color = Color.blue;
-                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.blue);
                 break;
-            case "Low Poly Char":
-                Poly.SetActive(true);
-
-                //toLoad.GetComponent<Renderer>().material.color = Color.green;
-                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+            case "Blindness":
+                Blindness.SetActive(true);
+                cam.gameObject.SetActive(true);
+                PostProcessLayer layer = cam.GetComponent<PostProcessLayer>();
+                layer.enabled = true;
+                minimap.GetComponent<Minimap>().player = Blindness.transform;
                 break;
-            case "Test":
-                Test.SetActive(true);
-
-                //toLoad.GetComponent<Renderer>().material.color = Color.cyan;
-                //toLoad.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.cyan);
+            case "Wheelchair":
+                Wheelchair.SetActive(true);
+                camWheel.gameObject.SetActive(true);
+                minimap.GetComponent<Minimap>().player = Wheelchair.transform;
                 break;
         }
-        cam.gameObject.SetActive(true);
-        //cam.clearFlags = CameraClearFlags.Nothing;
-        //StartCoroutine(ExampleCoroutine());
+        focuscam.gameObject.SetActive(true);
+
     }
 
-    // Update is called once per frame
-    //IEnumerator ExampleCoroutine()
-    //{
-        ///yield return new WaitForSeconds(2);
-        //cam.clearFlags = CameraClearFlags.Depth;
-        //cam.cullingMask = (1 << LayerMask.NameToLayer("Player"));
-        
-    //}
+
 }
