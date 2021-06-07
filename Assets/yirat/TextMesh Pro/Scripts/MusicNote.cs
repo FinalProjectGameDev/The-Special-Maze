@@ -13,11 +13,17 @@ public class MusicNote : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Button>().onClick.AddListener(notePlay);
+        gameObject.GetComponent<Button>().onClick.AddListener(RoutineWrap);
     }
-    public void notePlay()
+    public void RoutineWrap()
+    {
+        StartCoroutine(notePlay());
+    }
+
+    IEnumerator notePlay()
     {
         audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
         pianoDoorController.setNotes(audioSource);
     }
 }

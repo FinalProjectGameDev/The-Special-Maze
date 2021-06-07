@@ -283,7 +283,7 @@ Transform:
   - {fileID: 1973424777}
   - {fileID: 621265691}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8484757
 GameObject:
@@ -738,7 +738,7 @@ Transform:
   m_Children:
   - {fileID: 9673539}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &25576703
 GameObject:
@@ -1594,7 +1594,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &79261091
 GameObject:
@@ -2198,6 +2198,8 @@ MonoBehaviour:
   - {fileID: 1123874765}
   - {fileID: 72168511}
   pianoCanvas: {fileID: 1572078937}
+  onButton: 0
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!65 &157192585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2271,7 +2273,7 @@ Transform:
   m_Children:
   - {fileID: 400073677}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: -3.052002}
 --- !u!1 &162027884
 GameObject:
@@ -5671,7 +5673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840849061
 GameObject:
@@ -6034,7 +6036,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967989217
 GameObject:
@@ -7559,7 +7561,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302791041
 GameObject:
@@ -8068,7 +8070,7 @@ Transform:
   - {fileID: 1123874764}
   - {fileID: 72168510}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545503102
 GameObject:
@@ -8450,6 +8452,7 @@ RectTransform:
   - {fileID: 747910098}
   - {fileID: 38533633}
   - {fileID: 787043475}
+  - {fileID: 1588558586}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8519,10 +8522,10 @@ Transform:
   m_GameObject: {fileID: 1588558583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1572078938}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593927032
 GameObject:
@@ -10729,7 +10732,7 @@ Transform:
   m_LocalScale: {x: 120, y: 0.099999994, z: 80}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991150186
 GameObject:
@@ -12144,13 +12147,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyNeeded: 1
   gotKey: 0
-  HandleConnected: 0
-  keyGameObject: {fileID: 0}
-  txtToDisplay: {fileID: 0}
-  doorHandle: {fileID: 0}
-  fourSounds: []
+  playerInZone: 0
   correctAnswer: {fileID: 77071117}
   wrongAnswer: {fileID: 835242802}
+  pianoCanvas: {fileID: 1572078937}
+  musicAfterPressButton: {fileID: 157192583}
 --- !u!1 &2890964734634480386
 GameObject:
   m_ObjectHideFlags: 0

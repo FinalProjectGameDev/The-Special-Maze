@@ -12,8 +12,9 @@ public class MusicAfterPressButton : MonoBehaviour
     public static AudioSource[] fourSounds = new AudioSource[4];
     [SerializeField]
     public Canvas pianoCanvas;
-    private bool onButton;
- 
+    public bool onButton;
+    public PianoDoorController pianoDoorController;
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -41,6 +42,7 @@ public class MusicAfterPressButton : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 onButton = false;
+                pianoDoorController.playerInZone = false;
                 RoutineWrap();
             }
         }
@@ -53,7 +55,6 @@ public class MusicAfterPressButton : MonoBehaviour
 
     IEnumerator playSound()
     {
-        pianoCanvas.enabled = true;
         for (int i = 0; i< fourSounds.Length; i++)
         {
             fourSounds[i].Play();
@@ -67,7 +68,7 @@ public class MusicAfterPressButton : MonoBehaviour
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
         gustyle.fontSize = 20;
-        if (onButton)
+        if (onButton && !pianoDoorController.playerInZone)
         {
             GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to play sound", gustyle);
         }

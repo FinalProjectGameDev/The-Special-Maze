@@ -5,9 +5,8 @@ public class PianoDoorController : MonoBehaviour
 {
     public bool keyNeeded = false;              //Is key needed for the door
     public bool gotKey;                  //Has the player acquired key
-    public GameObject keyGameObject;            //If player has Key,  assign it here
 
-    private bool playerInZone;                  //Check if the player is in the zone
+    public bool playerInZone;                  //Check if the player is in the zone
     private bool doorOpened;                    //Check if door is currently opened or not
 
     private Animation doorAnim;
@@ -19,6 +18,10 @@ public class PianoDoorController : MonoBehaviour
     public AudioSource correctAnswer;
     [SerializeField]
     public AudioSource wrongAnswer;
+    [SerializeField]
+    public Canvas pianoCanvas;
+
+    public MusicAfterPressButton musicAfterPressButton;
     enum DoorState
     {
         Closed,
@@ -112,7 +115,15 @@ public class PianoDoorController : MonoBehaviour
                     wrongAnswer.Play();
                 }
             }
-            if (gotKey) { correctAnswer.Play(); }           
+            if (gotKey) { 
+                correctAnswer.Play();
+                pianoCanvas.gameObject.SetActive(false);
+            }           
+        }
+
+        if(!pianoCanvas.gameObject.activeSelf)
+        {
+            index = -1;
         }
     }
 
@@ -127,7 +138,7 @@ public class PianoDoorController : MonoBehaviour
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
         gustyle.fontSize = 20;
-        if (playerInZone)
+        if (playerInZone && !musicAfterPressButton.onButton)
         {
             if (doorState == DoorState.Opened)
             {
