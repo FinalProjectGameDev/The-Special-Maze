@@ -55,10 +55,10 @@ public class Handle : MonoBehaviour
     void OnGUI()
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
-        gustyle.fontSize = 20;
+        gustyle.fontSize = 40;
         if (playerInZone && this.gameObject.activeSelf)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press 'T' to PickUp the handle", gustyle);
+            GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press 'T' to PickUp the handle", gustyle);
         }
     }
 }

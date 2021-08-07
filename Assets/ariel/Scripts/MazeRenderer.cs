@@ -33,6 +33,8 @@ public class MazeRenderer : MonoBehaviour
 
     [SerializeField]
     private GameObject Dictionary = null;
+    [SerializeField]
+    private GameObject DictManeger = null;
 
     [SerializeField]
     private GameObject Medical = null;
@@ -112,42 +114,46 @@ public class MazeRenderer : MonoBehaviour
                     if(i>=5 && i<=9 && j>=0 && j<=4 && !located[0])
                     {
                         located[0] = true;
-                        var dog = Instantiate(Dog, transform);
-                        dog.transform.position = position - new Vector3(0, 1.45f, 0);
-                        if(!cell.HasFlag(WallState.RIGHT)) dog.transform.eulerAngles = new Vector3(0, 90, 0);
-                        else if(!cell.HasFlag(WallState.DOWN)) dog.transform.eulerAngles = new Vector3(0, 180, 0);
-                        else if(!cell.HasFlag(WallState.LEFT)) dog.transform.eulerAngles = new Vector3(0, 270, 0);
+                        //var dog = Instantiate(Dog, transform);
+                        Dog.transform.position = position - new Vector3(0, 1.45f, 0);
+                        if(!cell.HasFlag(WallState.RIGHT)) Dog.transform.eulerAngles = new Vector3(0, 90, 0);
+                        else if(!cell.HasFlag(WallState.DOWN)) Dog.transform.eulerAngles = new Vector3(0, 180, 0);
+                        else if(!cell.HasFlag(WallState.LEFT)) Dog.transform.eulerAngles = new Vector3(0, 270, 0);
                         //if(cell.HasFlag(WallState.UP)) dog.transform.eulerAngles = new Vector3(0, 90, 0);
+
+                        Dog.GetComponent<DogController>().player = GameObject.FindGameObjectWithTag("Player").transform;
                     }
                     else if (i >= 0 && i <= 4 && j >= 5 && j <= 9 && !located[1])
                     {
                         located[1] = true;
-                        var dic = Instantiate(Dictionary, transform);
-                        dic.transform.position = position;
+                        //var dic = Instantiate(Dictionary, transform);
+                        Dictionary.transform.position = position - new Vector3(0, 1.45f, 0);
+                        DictManeger.transform.position = position - new Vector3(0, 1.45f, 0);
                     }
-                    else if (i >= 10 && i <= 14 && j >= 10 && j <= 14 && !located[2])
-                    {
-                        located[2] = true;
-                        var med = Instantiate(Medical, transform);
-                        med.transform.position = position;
-                    }
-                    else if (i >= 10 && i <= 15 && j >= 0 && j <= 5 && !located[3])
+                    // else if (i >= 10 && i <= 14 && j >= 10 && j <= 14 && !located[2])
+                    // {
+                    //     located[2] = true;
+                    //     var med = Instantiate(Medical, transform);
+                    //     med.transform.position = position;
+                    // }
+                    else if (i >= 5 && i <= 9 && j >= 10 && j <= 14 && !located[3])
                     {
                         located[3] = true;
-                        var hear = Instantiate(HearingAid, transform);
-                        hear.transform.position = position;
+                        // var hear = Instantiate(HearingAid, transform);
+                        // hear.transform.position = position;
+                        HearingAid.transform.position = position - new Vector3(0, 1.45f, 0);;
                     }
-                    else if (i >= 20 && i <= 24 && j >= 5 && j <= 9 && !located[4])
+                    else if (i >= 10 && i <= 14 && j >= 15 && j <= 19 && !located[4])
                     {
                         located[4] = true;
-                        var gls = Instantiate(Glasses, transform);
-                        gls.transform.position = position;
+                        Glasses.transform.position = position - new Vector3(0, 1.45f, 0);
                     }
-                    else if (i >= 25 && i <= 29 && j >= 0 && j <= 4 && !located[5])
+                    else if (i >= 15 && i <= 19 && j >= 10 && j <= 14 && !located[5])
                     {
                         located[5] = true;
-                        var hnd = Instantiate(Hendle, transform);
-                        hnd.transform.position = position;
+                        //var hnd = Instantiate(Hendle, transform);
+                        //hnd.transform.position = position - new Vector3(0, 1.45f, 0);
+                        Hendle.transform.position = position - new Vector3(0, 1.45f, 0);
                     }
                     //else
                     //{

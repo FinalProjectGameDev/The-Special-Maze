@@ -23,10 +23,10 @@ TagManager:
   - walls
   - PostProcessing
   - Roof
-  - 
-  - 
-  - 
-  - 
+  - ground
+  - Interact
+  - savePoint
+  - doors
   - 
   - 
   - 

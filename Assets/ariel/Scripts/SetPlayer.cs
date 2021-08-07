@@ -31,24 +31,33 @@ public class SetPlayer : MonoBehaviour
                 Deaf.SetActive(true);
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Deaf.transform;
+                //focuscam.GetComponent<AudioListener>().enabled = false;
+                Deaf.GetComponent<AudioListener>().enabled = false;
                 break;
             case "Parkinson":
                 Parkinson.SetActive(true);
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Parkinson.transform;
-
+                //focuscam.GetComponent<AudioListener>().enabled = true;
+                Parkinson.GetComponent<AudioListener>().enabled = true;
                 break;
             case "Blindness":
                 Blindness.SetActive(true);
                 cam.gameObject.SetActive(true);
                 PostProcessLayer layer = cam.GetComponent<PostProcessLayer>();
-                layer.enabled = true;
+                layer.enabled = true; 
+                //PostProcessLayer mmlayer = minimap.GetComponent<PostProcessLayer>();
+               // mmlayer.enabled = true;
                 minimap.GetComponent<Minimap>().player = Blindness.transform;
+                //focuscam.GetComponent<AudioListener>().enabled = true;
+                Blindness.GetComponent<AudioListener>().enabled = true;
                 break;
             case "Wheelchair":
                 Wheelchair.SetActive(true);
                 camWheel.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Wheelchair.transform;
+                //focuscam.GetComponent<AudioListener>().enabled = true;
+                Wheelchair.GetComponent<AudioListener>().enabled = true;
                 break;
         }
         focuscam.gameObject.SetActive(true);

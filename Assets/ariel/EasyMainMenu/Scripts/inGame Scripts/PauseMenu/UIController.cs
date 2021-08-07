@@ -52,20 +52,20 @@ public class UIController : MonoBehaviour {
     void Update () {
 
         //if using UFPS
-        if (usingUFPS)
-            return; //exit
+    //     if (usingUFPS)
+    //         return; //exit
 
-          if ((forceCursorOnWhilePause) && (isOpen || saveMenu.active))
-      //  if (isOpen )//|| saveMenu.active)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-             Cursor.visible = false;
-             Cursor.lockState = CursorLockMode.Locked;
-        }
+    //       if ((forceCursorOnWhilePause) && (isOpen || saveMenu.active))
+    //   //  if (isOpen )//|| saveMenu.active)
+    //     {
+    //         Cursor.visible = true;
+    //         Cursor.lockState = CursorLockMode.None;
+    //     }
+    //     else
+    //     {
+    //          Cursor.visible = false;
+    //          Cursor.lockState = CursorLockMode.Locked;
+    //     }
 
 
 

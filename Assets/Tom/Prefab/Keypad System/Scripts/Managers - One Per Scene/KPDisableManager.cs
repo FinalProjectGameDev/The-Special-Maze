@@ -19,21 +19,21 @@ namespace keypadSystem
 
         public void DisablePlayer(bool disable)
         {
-            if (disable)
-            {
-                ///player.enabled = false;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                crosshair.enabled = false;
-            }
+            // if (disable)
+            // {
+            //     ///player.enabled = false;
+            //     Cursor.lockState = CursorLockMode.None;
+            //     Cursor.visible = true;
+            //     crosshair.enabled = false;
+            // }
 
-            if (!disable)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                ///player.enabled = true;
-                crosshair.enabled = true;
-            }
+            // if (!disable)
+            // {
+            //     Cursor.lockState = CursorLockMode.Locked;
+            //     Cursor.visible = false;
+            //     ///player.enabled = true;
+            //     crosshair.enabled = true;
+            // }
         }
     }
 }

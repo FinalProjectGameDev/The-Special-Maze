@@ -41,8 +41,8 @@ public class WordExposure : MonoBehaviour
                 if(!images[theChoosenNum].gameObject.activeSelf)
                 {
                     images[theChoosenNum].gameObject.SetActive(true);
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.None;
+                    //Cursor.visible = true;
+                    //Cursor.lockState = CursorLockMode.None;
                 }
                 else
                 {
@@ -55,10 +55,10 @@ public class WordExposure : MonoBehaviour
     void OnGUI()
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
-        gustyle.fontSize = 20;
+        gustyle.fontSize = 40;
         if (onButton)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E for accessibility", gustyle);
+            GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E for accessibility", gustyle);
         }
 
     }

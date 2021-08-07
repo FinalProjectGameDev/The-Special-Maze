@@ -21,6 +21,10 @@ public class PianoDoorController : MonoBehaviour
     [SerializeField]
     public Canvas pianoCanvas;
 
+    public UIController UIC;
+
+    public DogController dog;
+
     public MusicAfterPressButton musicAfterPressButton;
     enum DoorState
     {
@@ -91,6 +95,7 @@ public class PianoDoorController : MonoBehaviour
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
+                StartCoroutine(dog.GetComponent<DogController>().nextDestination());
             }
             if (doorState == DoorState.Opened && !doorAnim.isPlaying)
             {
@@ -117,7 +122,11 @@ public class PianoDoorController : MonoBehaviour
             }
             if (gotKey) { 
                 correctAnswer.Play();
+                UIC.isOpen = false;
                 pianoCanvas.gameObject.SetActive(false);
+                 Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            //CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
             }           
         }
 
@@ -137,22 +146,22 @@ public class PianoDoorController : MonoBehaviour
     void OnGUI()
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
-        gustyle.fontSize = 20;
+        gustyle.fontSize = 40;
         if (playerInZone && !musicAfterPressButton.onButton)
         {
             if (doorState == DoorState.Opened)
             {
-                GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press 'E' to Close", gustyle);
+                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press 'E' to Close", gustyle);
             }
             else if (doorState == DoorState.Closed)
             {
                 if (gotKey)
                 {
-                    GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to Open", gustyle);
+                    GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Open", gustyle);
                 }
                 else
                 {
-                    GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Need to repeat the music", gustyle);
+                    GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Need to repeat the music", gustyle);
                 }
             }
         }

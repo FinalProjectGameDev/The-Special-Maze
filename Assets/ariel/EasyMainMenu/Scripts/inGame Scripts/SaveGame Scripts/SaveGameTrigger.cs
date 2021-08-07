@@ -36,6 +36,8 @@ public class SaveGameTrigger : MonoBehaviour {
     [Tooltip("Debug to spawn player at this Trigger's spawnPoint")]
     public bool debugSpawn;
 
+    private bool onPoint;
+
     #endregion
 
     // Use this for initialization
@@ -47,6 +49,7 @@ public class SaveGameTrigger : MonoBehaviour {
 
         //checking is this the trigger where the player saved the game
 
+        onPoint = false;
     }
 
     void OnTriggerStay(Collider col)
@@ -77,8 +80,18 @@ public class SaveGameTrigger : MonoBehaviour {
 
             //CALL ON PAUSE events
             FindObjectOfType<UIController>().onPause.Invoke();
-            
+
+
+            onPoint = false;
         }
+    }
+
+    void OnTriggerEnter(Collider col){
+        if(col.tag == "Player") onPoint = true;
+    }
+
+    void OnTriggerExit(Collider col){
+        if(col.tag == "Player") onPoint = false;
     }
 
     void sendCurrentSavePointData() {
@@ -95,6 +108,16 @@ public class SaveGameTrigger : MonoBehaviour {
         {
             FindObjectOfType<LoadGameManager>().spawnPlayerAtPoint(spawnPoint);
             debugSpawn = false;
+        }
+    }
+
+    void OnGUI()
+    {
+        GUIStyle gustyle = new GUIStyle(GUI.skin.box);
+        gustyle.fontSize = 40;
+        if (onPoint)
+        {
+            GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press Y to Save this point", gustyle);
         }
     }
 
