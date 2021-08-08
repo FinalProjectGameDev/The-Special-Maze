@@ -25,7 +25,7 @@ public class DogController : MonoBehaviour
     void Start()
     {
         //player = GameObject.FindGameObjectWithTag("Player").transform;
-        Debug.Log(player);
+        // Debug.Log(player);
         seeing = false;
     }
 
@@ -52,7 +52,7 @@ public class DogController : MonoBehaviour
                 agent.ResetPath();
                 //agent.SetDestination(new Vector3(-47.5f,-1,-2));
                 agent.SetDestination(targets[currTarget].position);
-                Debug.Log("E");
+                // Debug.Log("E");
                 activated = true;
             }
         }
@@ -72,7 +72,7 @@ public class DogController : MonoBehaviour
                }
                else
                {
-                   Debug.Log(hit.transform);
+                //    Debug.Log(hit.transform);
 
                    // there is something obstructing the view
                    agent.isStopped = true;

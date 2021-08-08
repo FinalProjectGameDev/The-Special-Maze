@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &155740601186148405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155740601186148407}
+  - component: {fileID: 155740601186148404}
+  m_Layer: 0
+  m_Name: QuestGiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &155740601186148407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155740601186148405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &155740601186148404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155740601186148405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac667a4e9563094083146749d5f4a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualImpairmentScenario:
+  - title: Welcome
+    description: 'You have arrived at a special maze game! Your goal is to get out
+      of the maze, When during the maze you will encounter different and varied challenges. '
+    next: 1
+    Prev: 0
+  - title: 'Explanation of the character '
+    description: 'Your character has a visual impairment, Which is expressed in heavy
+      blurring '
+    next: 1
+    Prev: 1
+  - title: 'Hint '
+    description: 'Did you hear the dog? Find him and follow him '
+    next: 0
+    Prev: 1
+  - title: 'Explanation of a task '
+    description: 'Press the play button,and enter the code '
+    next: 0
+    Prev: 0
+  - title: 
+    description: 'Well done for completing the mission '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Listen to music and press the notes in order '
+    next: 0
+    Prev: 0
+  - title: Well done for completing the mission
+    description: 
+    next: 1
+    Prev: 0
+  - title: 'Hint '
+    description: 'Find the next door handle in the maze and the glasses in the maze 
+      Explanation of a task '
+    next: 0
+    Prev: 1
+  - title: Explanation of a task
+    description: 'Attach the handle you found, Note if your character with a visual
+      impairment is in need of glasses '
+    next: 0
+    Prev: 0
+  - title: 
+    description: Well done for getting out of the maze!
+    next: 0
+    Prev: 0
+  walkingDisabilityScenario:
+  - title: 'Welcome '
+    description: 'You have arrived at a special maze game! Your goal is to get out
+      of the maze, When during the maze you will encounter different and varied challenges '
+    next: 1
+    Prev: 0
+  - title: Explanation of the character
+    description: 'Your character has a walking disability,  He can not walk and moves
+      around in a wheelchair. '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Press the play button,and enter the code '
+    next: 0
+    Prev: 0
+  - title: 
+    description: 'Well done for completing the mission '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Listen to music and press the notes in order '
+    next: 0
+    Prev: 0
+  - title: 
+    description: Well done for completing the mission
+    next: 1
+    Prev: 0
+  - title: 
+    description: 
+    next: 0
+    Prev: 0
+  - title: 'Hint '
+    description: 'Find the next door handle in the maze '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Attach the handle you found '
+    next: 0
+    Prev: 0
+  - title: 
+    description: Well done for getting out of the maze!
+    next: 0
+    Prev: 0
+  deafScenario:
+  - title: Welcome
+    description: 'You have arrived at a special maze game! Your goal is to get out
+      of the maze, When during the maze you will encounter different and varied challenges  '
+    next: 1
+    Prev: 0
+  - title: 'Explanation of the character '
+    description: Your character is deaf
+    next: 0
+    Prev: 0
+  - title: 'Hint '
+    description: 'Find the dictionary that will help you get through the door '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Click the Accessibility button,and enter the code '
+    next: 0
+    Prev: 0
+  - title: 'Well done for completing the mission '
+    description: 
+    next: 1
+    Prev: 0
+  - title: 'Hint '
+    description: 'Find a hearing aid '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Listen to music and press the notes in order '
+    next: 0
+    Prev: 0
+  - title: 
+    description: 'Well done for completing the mission '
+    next: 1
+    Prev: 0
+  - title: 'Hint '
+    description: 'Find the next door handle in the maze '
+    next: 0
+    Prev: 0
+  - title: 'Explanation of a task '
+    description: 'Attach the handle you found '
+    next: 0
+    Prev: 0
+  - title: 
+    description: 'Well done for getting out of the maze! '
+    next: 0
+    Prev: 0
+  currArr: []
+  currIndex: 0
+  currExplain:
+    title: 
+    description: 
+    next: 0
+    Prev: 0
+  window: {fileID: 0}
+  title: {fileID: 0}
+  description: {fileID: 0}
+  prev: {fileID: 0}
+  next: {fileID: 0}
+  close: {fileID: 0}

@@ -7,28 +7,31 @@ public class QuestGiver : MonoBehaviour
 {
     public Quest [] visualImpairmentScenario;
     public Quest [] walkingDisabilityScenario;
-    public Quest[] deafScenario;
-    public Quest[] currArr;
+    public Quest [] deafScenario;
+    public Quest [] currArr;
     public int currIndex;
     public Quest currExplain;
-    public GameObject window;
     public Text title;
     public Text description;
     public GameObject prev;
     public GameObject next;
     public GameObject close;
+    public UIController UIC;
+    public string typePlayer;
 
     void Awake()
     {
-        currIndex = 1;
-        OpenWindow('v');
+        currIndex = -1;
+        typePlayer = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+        openExplain();
     }
 
-    public void OpenWindow(Quest[] givenArr)
+    public void openWindow(Quest[] givenArr)
     {
+        currIndex++;
         currArr = givenArr;
         currExplain = givenArr[currIndex];
-        window.SetActive(true);
+        UIC.openExplain();
         if(currExplain.next)
         {
             next.SetActive(true);
@@ -47,51 +50,48 @@ public class QuestGiver : MonoBehaviour
         }
         title.text = currExplain.title;
         description.text = currExplain.description;
-        currIndex++;
+        
     }
 
-    public void OpenWindow(char c)
+    public void openExplain()
     {
-        if(c == 'v')
+        switch (typePlayer)
         {
-            currIndex = 0;
-            currArr = visualImpairmentScenario;
-            OpenWindow(visualImpairmentScenario);
-        }
-        else if(c == 'w')
-        {
-            currArr = walkingDisabilityScenario;
-            OpenWindow(walkingDisabilityScenario);
-        }
-        else
-        {
-            currArr = deafScenario;
-            OpenWindow(deafScenario);
+            case "Deaf":
+               openWindow(deafScenario); 
+                break;
+            case "Parkinson": 
+                break;
+            case "Blindness":
+                  openWindow(visualImpairmentScenario);
+                break;
+            case "Wheelchair":
+                openWindow(walkingDisabilityScenario);
+                break;
         }
        
     }
 
     public void closeWindow()
     {
-        Debug.Log("enter");
         while(currExplain.next)
         {
             currIndex++;
             currExplain = currArr[currIndex];
         }
-        window.SetActive(false);
+        UIC.closeExplain();
     }
 
     public void nextWindow()
     {
-        OpenWindow(currArr);
+        openWindow(currArr);
     }
 
     public void prevWindow()
     {
         currIndex--;
         currIndex--;
-        OpenWindow(currArr);
+        openWindow(currArr);
     }
 
 }

@@ -146,7 +146,7 @@ public class MazeRenderer : MonoBehaviour
                     else if (i >= 10 && i <= 14 && j >= 15 && j <= 19 && !located[4])
                     {
                         located[4] = true;
-                        Glasses.transform.position = position - new Vector3(0, 1.45f, 0);
+                        Glasses.transform.position = position - new Vector3(0, 1.35f, 0);
                     }
                     else if (i >= 15 && i <= 19 && j >= 10 && j <= 14 && !located[5])
                     {

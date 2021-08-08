@@ -38,6 +38,7 @@ public class WordExposure : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("E Preessed");
                 if(!images[theChoosenNum].gameObject.activeSelf)
                 {
                     images[theChoosenNum].gameObject.SetActive(true);

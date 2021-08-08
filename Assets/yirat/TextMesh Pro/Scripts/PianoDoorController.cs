@@ -23,6 +23,8 @@ public class PianoDoorController : MonoBehaviour
 
     public DogController dog;
 
+    public QuestGiver QG;
+
     public MusicAfterPressButton musicAfterPressButton;
     enum DoorState
     {
@@ -93,6 +95,7 @@ public class PianoDoorController : MonoBehaviour
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
+                QG.openExplain();
                 StartCoroutine(dog.GetComponent<DogController>().nextDestination());
             }
             if (doorState == DoorState.Opened && !doorAnim.isPlaying)
@@ -124,10 +127,10 @@ public class PianoDoorController : MonoBehaviour
             }           
         }
 
-        if(UIC.pianoIsOpen)
-        {
-            index = -1;
-        }
+        // if(UIC.pianoIsOpen)
+        // {
+        //     index = -1;
+        // }
     }
 
     public void setNotes(AudioSource audioSource)

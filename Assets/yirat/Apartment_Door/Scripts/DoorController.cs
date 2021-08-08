@@ -17,6 +17,9 @@ public class DoorController : MonoBehaviour
 
     public DogController dog;
 
+    public QuestGiver QG;
+
+
     enum DoorState
     {
         Closed,
@@ -103,6 +106,8 @@ public class DoorController : MonoBehaviour
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
+                StartCoroutine(dog.GetComponent<DogController>().nextDestination());
+                QG.openExplain();
             }
             if (doorState == DoorState.Opened && !doorAnim.isPlaying)
             {
@@ -125,6 +130,7 @@ public class DoorController : MonoBehaviour
         gotKey = true;
         Debug.Log("Keyboard success");
         StartCoroutine(dog.GetComponent<DogController>().nextDestination());
+
     }
 
     void OnGUI()

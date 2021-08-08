@@ -16,7 +16,10 @@ public class UIController : MonoBehaviour {
     public GameObject piano;
     public GameObject dictionary;
     public GameObject instructions;
-    
+    public GameObject explains;
+
+    public QuestGiver QG;
+
     Fader fader;
     //[HideInInspector]
     public bool pauseIsOpen;
@@ -24,6 +27,7 @@ public class UIController : MonoBehaviour {
     public bool keypadIsOpen;
     public bool pianoIsOpen;
     public bool dictIsOpen;
+    public bool explainIsOpen;
 
     public Canvas[] allUI;
 
@@ -48,11 +52,12 @@ public class UIController : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
+        // QG.openExplain();
     }
 
     // Update is called once per frame
     void Update () {
-        if (pauseIsOpen || keypadIsOpen || pianoIsOpen || dictIsOpen)
+        if (pauseIsOpen || keypadIsOpen || pianoIsOpen || dictIsOpen || explainIsOpen)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -134,6 +139,18 @@ public class UIController : MonoBehaviour {
     {
         dictionary.SetActive(false);
         dictIsOpen = false;
+    }
+
+    public void openExplain()
+    {
+        explains.SetActive(true);
+        explainIsOpen = true;
+    }
+
+    public void closeExplain()
+    {
+        explains.SetActive(false);
+        explainIsOpen = false;
     }
 
     public void openPauseMenu() {

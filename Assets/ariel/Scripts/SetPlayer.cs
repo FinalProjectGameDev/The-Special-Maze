@@ -6,7 +6,7 @@ using UnityEngine;
 public class SetPlayer : MonoBehaviour
 {
 
-    string _currentSelectedCharName;
+    public string _currentSelectedCharName;
     //public GameObject toLoad;
 
     public Camera cam;

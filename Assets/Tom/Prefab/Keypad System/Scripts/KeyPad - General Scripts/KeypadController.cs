@@ -34,6 +34,8 @@ namespace keypadSystem
 
         public Camera CamToLoc;
 
+        public QuestGiver QG;
+
         void OnTriggerEnter(Collider other)
         {
             onKeyboard = true;
@@ -79,6 +81,7 @@ namespace keypadSystem
         {
             //IF YOUR CODE IS CORRECT!
             unlock.Invoke();
+            QG.openExplain();
         }
 
         public void ShowKeypad()
