@@ -11,7 +11,6 @@ public class MusicAfterPressButton : MonoBehaviour
     [SerializeField]
     public static AudioSource[] fourSounds = new AudioSource[4];
     [SerializeField]
-    public Canvas pianoCanvas;
     public bool onButton;
     public PianoDoorController pianoDoorController;
     public UIController UIC;
@@ -62,11 +61,7 @@ public class MusicAfterPressButton : MonoBehaviour
             Debug.Log(fourSounds[i].name);
             yield return new WaitForSeconds(fourSounds[i].clip.length);
         }
-        pianoCanvas.gameObject.SetActive(true);
-        UIC.isOpen = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-            //CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
+        UIC.openPiano();
     }
 
     void OnGUI()

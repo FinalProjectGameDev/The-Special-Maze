@@ -13,7 +13,8 @@ namespace keypadSystem
 
         [Header("UI Elements")]
         public InputField codeText;
-        [SerializeField] private GameObject keyPadCanvas;
+        // [SerializeField] private GameObject keyPadCanvas;
+        [SerializeField] private UIController UIController;
 
         [Header("GameObjects")]
         [SerializeField] private GameObject keypadModel;
@@ -53,7 +54,7 @@ namespace keypadSystem
 
         void Update()
         {
-            if (onKeyboard && Input.GetKeyDown(KeyCode.E))
+            if (onKeyboard && Input.GetKeyDown(KeyCode.K))
             {
                 ShowKeypad();
             }
@@ -82,20 +83,22 @@ namespace keypadSystem
 
         public void ShowKeypad()
         {
-            keyPadCanvas.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
+            UIController.openKeypad();
+            // keyPadCanvas.SetActive(true);
+            // Cursor.visible = true;
+            // Cursor.lockState = CursorLockMode.None;
+            // CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
             // lookx.enabled = false;
             // looky.enabled = false;
         }
 
         public void CloseKeypad()
         {
-            keyPadCanvas.SetActive(false);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
+            UIController.closeKeypad();
+            // keyPadCanvas.SetActive(false);
+            // Cursor.visible = false;
+            // Cursor.lockState = CursorLockMode.Locked;
+            // CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
             // lookx.enabled = true;
             // looky.enabled = true;
         }
@@ -111,7 +114,7 @@ namespace keypadSystem
             gustyle.fontSize = 40;
             if (onKeyboard)
             {
-                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Open the Keyboard", gustyle);
+                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press K to Open the Keyboard", gustyle);
                 
             }
         }

@@ -136,7 +136,7 @@ public class MazeRenderer : MonoBehaviour
                     //     var med = Instantiate(Medical, transform);
                     //     med.transform.position = position;
                     // }
-                    else if (i >= 5 && i <= 9 && j >= 10 && j <= 14 && !located[3])
+                    else if (i >= 6 && i <= 9 && j >= 10 && j <= 14 && !located[3])
                     {
                         located[3] = true;
                         // var hear = Instantiate(HearingAid, transform);

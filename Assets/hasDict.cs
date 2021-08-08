@@ -6,9 +6,8 @@ public class hasDict : MonoBehaviour
 {
     public bool onDict;
     public bool hasdict=false;
-    [SerializeField] GameObject DictCanvas;
+    [SerializeField] UIController UIC;
     [SerializeField] GameObject Dict;
-    public Camera CamToLoc;
     
     void OnTriggerEnter(Collider other)
     {
@@ -22,7 +21,7 @@ public class hasDict : MonoBehaviour
 
     void Start()
     {
-        DictCanvas.gameObject.SetActive(false);
+        UIC.closeDict();
     }
 
     void Update()
@@ -33,36 +32,16 @@ public class hasDict : MonoBehaviour
             {
                 Dict.gameObject.SetActive(false);
                 hasdict = true;
-                // toOpen.gotKey = true;
-                // finisgText.SetActive(true);
             }
         }
         if (hasdict)
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if (!DictCanvas.gameObject.activeSelf)
-                {
-                    DictCanvas.gameObject.SetActive(true);
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.None;
-                    CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
-                    // lookx.enabled = false;
-                    // looky.enabled = false;
+                if(UIC.dictIsOpen){
+                    UIC.closeDict();
                 }
-                else
-                {
-                    DictCanvas.gameObject.SetActive(false);
-                    // if (!PassCanvas.gameObject.activeSelf && !sliderMenager.gameObject.activeSelf)
-                    // {
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
-
-                        // lookx.enabled = true;
-                        // looky.enabled = true;
-                    // }
-                }                
+                else UIC.openDict();
             }
         }
     }
@@ -79,7 +58,14 @@ public class hasDict : MonoBehaviour
         if (hasdict)
         {
             gustyle.fontSize = 20;
-            GUI.Box(new Rect(Screen.width / 2 - 550, Screen.height - 40, 400, 30), "Press B to Open the Brille Dictionary", gustyle);
+            if (!UIC.dictIsOpen)
+            {
+                GUI.Box(new Rect(40, Screen.height - 40, 300, 30), "Press B to Open the Dictionary", gustyle);
+            }
+            else
+            {
+                GUI.Box(new Rect(40, Screen.height - 40, 300, 30), "Press B to Close the Dictionary", gustyle);
+            }
         }
     }
 }

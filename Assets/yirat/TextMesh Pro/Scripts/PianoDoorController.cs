@@ -18,8 +18,6 @@ public class PianoDoorController : MonoBehaviour
     public AudioSource correctAnswer;
     [SerializeField]
     public AudioSource wrongAnswer;
-    [SerializeField]
-    public Canvas pianoCanvas;
 
     public UIController UIC;
 
@@ -122,15 +120,11 @@ public class PianoDoorController : MonoBehaviour
             }
             if (gotKey) { 
                 correctAnswer.Play();
-                UIC.isOpen = false;
-                pianoCanvas.gameObject.SetActive(false);
-                 Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            //CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
+                UIC.closePiano();
             }           
         }
 
-        if(!pianoCanvas.gameObject.activeSelf)
+        if(UIC.pianoIsOpen)
         {
             index = -1;
         }
