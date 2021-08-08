@@ -12991,7 +12991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17628fa624668e4e923569e1abf44c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtToDisplay: {fileID: 0}
   DC: {fileID: 0}
 --- !u!33 &3764491389970653296
 MeshFilter:
