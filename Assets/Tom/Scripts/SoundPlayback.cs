@@ -17,9 +17,6 @@ public class SoundPlayback : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         onButton = true;
-
-
-        
     }
 
     void OnTriggerExit(Collider other)

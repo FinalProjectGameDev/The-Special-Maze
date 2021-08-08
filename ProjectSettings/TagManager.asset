@@ -23,10 +23,17 @@ TagManager:
   - walls
   - PostProcessing
   - Roof
+<<<<<<< Updated upstream
   - ground
   - Interact
   - savePoint
   - doors
+=======
+  - Interact
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes
   - 
   - 
   - 
