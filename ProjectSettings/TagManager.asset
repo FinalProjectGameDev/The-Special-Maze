@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player2
-  - Keypad
   - generateRandomNumber
+  - Keypad
   layers:
   - Default
   - TransparentFX
@@ -16,15 +16,15 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - Player
-  - endWay
+  - ground
+  - roof
+  - player
+  - doors
   - walls
-  - PostProcessing
-  - Roof
-  - 
-  - 
+  - sphireMinimap
+  - objects
+  - dog
+  - missionParts
   - 
   - 
   - 

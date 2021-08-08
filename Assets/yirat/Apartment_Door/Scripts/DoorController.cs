@@ -15,6 +15,11 @@ public class DoorController : MonoBehaviour
     private Animation doorAnim;
     private BoxCollider doorCollider;           //To enable the player to go through the door if door is opened else block him
 
+    public DogController dog;
+
+    public QuestGiver QG;
+
+
     enum DoorState
     {
         Closed,
@@ -101,6 +106,8 @@ public class DoorController : MonoBehaviour
             {
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
+                StartCoroutine(dog.GetComponent<DogController>().nextDestination());
+                QG.openExplain();
             }
             if (doorState == DoorState.Opened && !doorAnim.isPlaying)
             {
@@ -115,15 +122,26 @@ public class DoorController : MonoBehaviour
         }
     }
 
+    public void openDoor()
+    {
+        doorAnim.Play("Door_Open");
+        doorState = DoorState.Opened;
+        doorOpened = true;
+        gotKey = true;
+        Debug.Log("Keyboard success");
+        StartCoroutine(dog.GetComponent<DogController>().nextDestination());
+
+    }
+
     void OnGUI()
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);
-        gustyle.fontSize = 20;
+        gustyle.fontSize = 40;
         if (playerInZone)
         {
             if (doorState == DoorState.Opened)
             {
-                GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press 'E' to Close", gustyle);
+                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press 'E' to Close", gustyle);
             }
             else if (doorState == DoorState.Closed)
             {
@@ -131,16 +149,16 @@ public class DoorController : MonoBehaviour
                 {
                     if (HandleConnected)
                     {
-                        GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press E to Open", gustyle);
+                        GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Open", gustyle);
                     }
                     else
                     {
-                        GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Press T to Connect The Hendle", gustyle);
+                        GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press T to Connect The Hendle", gustyle);
                     }
                 }
                 else
                 {
-                    GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height - 40, 300, 30), "Needs Handle", gustyle);
+                    GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Needs Handle", gustyle);
                 }
             }
         }

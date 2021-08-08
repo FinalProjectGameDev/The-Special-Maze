@@ -63,7 +63,7 @@ namespace EMM
             CharacterNameText.text = _currentSelectedCharName;
 
             //change Select button text based on the current selected character
-            SelectButtonText.text = _currentSelectedCharName == PlayerPrefs.GetString("CurrentSelectedCharacter", AllCharacters[0].CharacterName) ? "Selected" : "Select";
+            SelectButtonText.text = _currentSelectedCharName == PlayerPrefs.GetString("CurrentSelectedCharacter", AllCharacters[0].CharacterName) ? "Selected" : _currentSelectedCharName == "Parkinson"? "Comming Soon":"Select";
 
             //now set _currentSelectedCharCount
             if (_currentSelectedCharCount < _totalCharacters-1)
@@ -76,14 +76,17 @@ namespace EMM
 
         public void SelectCharacter()
         {
-            //we will be accessing the character by name and not by index is coz, index can be  changed, but hopefully,
-            //the name will remain same.
-            //save character by name
-            PlayerPrefs.SetString("CurrentSelectedCharacter", _currentSelectedCharName);
+            if(_currentSelectedCharName != "Parkinson")
+            {
+                //we will be accessing the character by name and not by index is coz, index can be  changed, but hopefully,
+                //the name will remain same.
+                //save character by name
+                PlayerPrefs.SetString("CurrentSelectedCharacter", _currentSelectedCharName);
 
-            SelectButtonText.text = "Selected";
+                SelectButtonText.text = "Selected";
 
-            PlayClickSound();
+                PlayClickSound();
+            }
         }
 
         void PlayClickSound()

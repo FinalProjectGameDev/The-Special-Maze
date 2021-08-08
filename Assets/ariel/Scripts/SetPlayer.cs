@@ -6,7 +6,7 @@ using UnityEngine;
 public class SetPlayer : MonoBehaviour
 {
 
-    string _currentSelectedCharName;
+    public string _currentSelectedCharName;
     //public GameObject toLoad;
 
     public Camera cam;
@@ -31,24 +31,29 @@ public class SetPlayer : MonoBehaviour
                 Deaf.SetActive(true);
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Deaf.transform;
+                Deaf.GetComponent<AudioListener>().enabled = false;
                 break;
             case "Parkinson":
                 Parkinson.SetActive(true);
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Parkinson.transform;
-
+                Parkinson.GetComponent<AudioListener>().enabled = true;
                 break;
             case "Blindness":
                 Blindness.SetActive(true);
                 cam.gameObject.SetActive(true);
                 PostProcessLayer layer = cam.GetComponent<PostProcessLayer>();
-                layer.enabled = true;
+                layer.enabled = true; 
+                //PostProcessLayer mmlayer = minimap.GetComponent<PostProcessLayer>();
+               // mmlayer.enabled = true;
                 minimap.GetComponent<Minimap>().player = Blindness.transform;
+                Blindness.GetComponent<AudioListener>().enabled = true;
                 break;
             case "Wheelchair":
                 Wheelchair.SetActive(true);
                 camWheel.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Wheelchair.transform;
+                Wheelchair.GetComponent<AudioListener>().enabled = true;
                 break;
         }
         focuscam.gameObject.SetActive(true);

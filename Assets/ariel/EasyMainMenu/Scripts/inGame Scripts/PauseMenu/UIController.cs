@@ -8,31 +8,37 @@ public class UIController : MonoBehaviour {
     [Tooltip("Usee Blur in Pause Menu?")]
     public bool useBlur;
 
-    public bool forceCursorOnWhilePause;
-
     [Header("Both UI Panels")]
     public GameObject saveMenu;
     public GameObject pauseMenu;
+    public GameObject minimap;
+    public GameObject keyboard;
+    public GameObject piano;
+    public GameObject dictionary;
+    public GameObject instructions;
+    public GameObject explains;
+
+    public QuestGiver QG;
+
     Fader fader;
     //[HideInInspector]
-    public bool isOpen;
-    Canvas[] allUI;
+    public bool pauseIsOpen;
+    public bool minimapIsOpen;
+    public bool keypadIsOpen;
+    public bool pianoIsOpen;
+    public bool dictIsOpen;
+    public bool explainIsOpen;
+
+    public Canvas[] allUI;
 
     [Header("Pause Game and Resume Game Events")]
     public UnityEngine.Events.UnityEvent onPause = new UnityEngine.Events.UnityEvent();
     public UnityEngine.Events.UnityEvent onUnpause = new UnityEngine.Events.UnityEvent();
 
-    [HideInInspector]
+    // [HideInInspector]
     public List<LoadSlotIdentifier> loadSlots;
 
-    [HideInInspector]
-    public bool usingUFPS = false;
-
-    [SerializeField]
-    public LookX lookX;
-
-    [SerializeField]
-    public LookY lookY;
+    public Camera CamToLoc;
 
     // Use this for initialization
     IEnumerator Start () {
@@ -46,42 +52,106 @@ public class UIController : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
+        // QG.openExplain();
     }
 
     // Update is called once per frame
     void Update () {
-
-        //if using UFPS
-        if (usingUFPS)
-            return; //exit
-
-          if ((forceCursorOnWhilePause) && (isOpen || saveMenu.active))
-      //  if (isOpen )//|| saveMenu.active)
+        if (pauseIsOpen || keypadIsOpen || pianoIsOpen || dictIsOpen || explainIsOpen)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
+
         }
         else
         {
-             Cursor.visible = false;
-             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
+
         }
 
-
-
-
         //if save menu is not opened
-        if (!saveMenu.active && canOpen())
+        // if (!saveMenu.active && canOpen())
+        if (!saveMenu.active)
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
-                if (!isOpen)
+                if (!pauseIsOpen)
                     openPauseMenu();
                 else
                     closePauseMenu();
             }
         }
+
+        if (!saveMenu.active && !pauseMenu.active)
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                if (!minimapIsOpen && !pauseIsOpen)
+                    openMinimap();
+                else
+                    closeMinimap();
+            }
+        }
 	}
+
+    public void openMinimap()
+    {
+        minimap.SetActive(true);
+        minimapIsOpen = true;
+    }
+    public void closeMinimap()
+    {
+        minimap.SetActive(false);
+        minimapIsOpen = false;
+    }
+
+    public void openKeypad()
+    {
+        keyboard.SetActive(true);
+        keypadIsOpen = true;
+    }
+    public void closeKeypad()
+    {
+        keyboard.SetActive(false);
+        keypadIsOpen = false;
+    }
+
+    public void openPiano()
+    {
+        piano.SetActive(true);
+        pianoIsOpen = true;
+    }
+    public void closePiano()
+    {
+        piano.SetActive(false);
+        pianoIsOpen = false;
+    }
+
+    public void openDict()
+    {
+        dictionary.SetActive(true);
+        dictIsOpen = true;
+    }
+    public void closeDict()
+    {
+        dictionary.SetActive(false);
+        dictIsOpen = false;
+    }
+
+    public void openExplain()
+    {
+        explains.SetActive(true);
+        explainIsOpen = true;
+    }
+
+    public void closeExplain()
+    {
+        explains.SetActive(false);
+        explainIsOpen = false;
+    }
 
     public void openPauseMenu() {
 
@@ -93,8 +163,6 @@ public class UIController : MonoBehaviour {
                 allUI[i].gameObject.SetActive(false);
         }
 
-        //lookX.enabled = false;
-        //lookY.enabled = false;
 
         saveMenu.SetActive(false);
         pauseMenu.SetActive(true);
@@ -106,10 +174,10 @@ public class UIController : MonoBehaviour {
         GetComponent<Animator>().Play("OpenPauseMenu");
 
         //time = almost 0
-        if(!usingUFPS)
-            Time.timeScale = 0.0001f;
+        // if(!usingUFPS)
+        //     Time.timeScale = 0.0001f;
 
-        isOpen = true;
+        pauseIsOpen = true;
 
         //init pause menu options
         GetComponent<PauseMenuOptions>().Init();
@@ -135,9 +203,6 @@ public class UIController : MonoBehaviour {
            allUI[i].gameObject.SetActive(true);
         }
 
-        //time = 1
-        if(!usingUFPS)
-            Time.timeScale = 1;
 
         //play sound
         GetComponent<SaveGameUI>().playClickSound();
@@ -146,16 +211,14 @@ public class UIController : MonoBehaviour {
         GetComponent<Animator>().Play("ClosePauseMenu");
         // hideMenus();
 
-        lookX.enabled = true;
-        lookY.enabled = true;
-        isOpen = false;
+ 
+        pauseIsOpen = false;
 
         //enable blur
         if (useBlur)
         {
             if(Camera.main.GetComponent<Animator>())
             Camera.main.GetComponent<Animator>().Play("BlurOff");
-
         }
 
         onUnpause.Invoke();
@@ -210,12 +273,12 @@ public class UIController : MonoBehaviour {
 
     }
 
-    [HideInInspector]
-    public bool openPMenu = true;
-    public bool canOpen()
-    {
-        return openPMenu;
-    }
+    // [HideInInspector]
+    // public bool openPMenu = true;
+    // public bool canOpen()
+    // {
+    //     return openPMenu;
+    // }
 
 
 }
