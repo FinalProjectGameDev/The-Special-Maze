@@ -275,13 +275,13 @@ public static class MazeGenerator
 
         maze[29, 15] &= ~WallState.RIGHT;
 
-        for (int i = 0; i < 30; ++i)
-        {
-            for (int j = 0; j < 20; ++j)
-            {
-                Debug.Log(maze[i, j].GetHashCode());
-            }
-        }
+        // for (int i = 0; i < 30; ++i)
+        // {
+        //     for (int j = 0; j < 20; ++j)
+        //     {
+        //         Debug.Log(maze[i, j].GetHashCode());
+        //     }
+        // }
 
         return ApplyRecursiveBacktracker(maze);
 
