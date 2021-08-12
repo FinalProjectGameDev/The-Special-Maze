@@ -7,34 +7,46 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
-    private int tutorialIndex;
-    private int keysToPlayIndedx;
+    public int tutorialIndex;
+    public int keysToPlayIndex;
 
-    public Canvas tutorialCanvas;
+    // public Canvas tutorialCanvas;
     public Tutorial[] regularTutorials;
     public Tutorial[] wheelchairTutorials;
+    public Tutorial[] currTutorials;
     public TMP_Text currentDescription;
     public Image currentKeys;
+    public string typePlayer;
+    public UIController UIC;
+
 
     private void Start()
     {
-        tutorialIndex = 0;
-        keysToPlayIndedx = 0;
+        tutorialIndex = -1;
+        keysToPlayIndex = 0;
+        typePlayer = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+        if (typePlayer == "Wheelchair"){
+            currTutorials = wheelchairTutorials;
+        }
+        else{
+            currTutorials = regularTutorials;
+        }
+        UpdateCanvas();
     }
 
     void Update()
     {
-        if (tutorialIndex < regularTutorials.Length)
+        if (tutorialIndex < currTutorials.Length)
         {
-            if (Input.GetKey(regularTutorials[tutorialIndex].keysToPlay[keysToPlayIndedx]))
+            if (Input.GetKey(currTutorials[tutorialIndex].keysToPlay[keysToPlayIndex]))
             {
 
-                if (keysToPlayIndedx == regularTutorials[tutorialIndex].keysToPlay.Length - 1)
+                if (keysToPlayIndex == currTutorials[tutorialIndex].keysToPlay.Length - 1)
                 {
                     UpdateCanvas();
                 }
 
-                else keysToPlayIndedx++;
+                else keysToPlayIndex++;
             }
         }
 
@@ -42,15 +54,16 @@ public class TutorialManager : MonoBehaviour
 
     public void UpdateCanvas()
     {
-        if (tutorialIndex < regularTutorials.Length - 1)
+        if (tutorialIndex < currTutorials.Length - 1)
         {
             tutorialIndex++;
-            keysToPlayIndedx = 0;
-            currentDescription.text = regularTutorials[tutorialIndex].description;
+            keysToPlayIndex = 0;
+            currentDescription.text = currTutorials[tutorialIndex].description;
             currentKeys.gameObject.SetActive(false);
-            currentKeys = regularTutorials[tutorialIndex].keys;
+            currentKeys = currTutorials[tutorialIndex].keys;
             currentKeys.gameObject.SetActive(true);
         }
-        else tutorialCanvas.gameObject.SetActive(false);    
+        // else tutorialCanvas.gameObject.SetActive(false);    
+        else UIC.closeTutorial();    
     }
 }

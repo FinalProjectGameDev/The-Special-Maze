@@ -31,13 +31,13 @@ public class WheelChairController : MonoBehaviour
             move = 1;
             _cc.Move(transform.forward * _speed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             side = 0.5f;
             move = 0.5f;
 
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             side = -0.5f;
             move = 0.5f;

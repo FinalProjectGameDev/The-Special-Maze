@@ -15,8 +15,10 @@ public class UIController : MonoBehaviour {
     public GameObject keyboard;
     public GameObject piano;
     public GameObject dictionary;
-    public GameObject instructions;
+    public GameObject tutorial;
+    public GameObject tutorialManeger;
     public GameObject explains;
+    public GameObject explainsManeger;
 
     public QuestGiver QG;
 
@@ -27,7 +29,9 @@ public class UIController : MonoBehaviour {
     public bool keypadIsOpen;
     public bool pianoIsOpen;
     public bool dictIsOpen;
+    public bool tutorialIsOpen;
     public bool explainIsOpen;
+
 
     public Canvas[] allUI;
 
@@ -52,7 +56,7 @@ public class UIController : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
-        // QG.openExplain();
+        openExplain();
     }
 
     // Update is called once per frame
@@ -63,6 +67,11 @@ public class UIController : MonoBehaviour {
             Cursor.lockState = CursorLockMode.None;
             CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
 
+        }
+        else if(tutorialIsOpen){
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
         }
         else
         {
@@ -141,8 +150,23 @@ public class UIController : MonoBehaviour {
         dictIsOpen = false;
     }
 
+    public void openTutorial()
+    {
+
+        tutorial.SetActive(true);
+        tutorialIsOpen = true;
+        tutorialManeger.SetActive(true);        
+    }
+
+    public void closeTutorial()
+    {
+        tutorial.SetActive(false);
+        tutorialIsOpen = false;
+    }
+
     public void openExplain()
     {
+        explainsManeger.SetActive(true);
         explains.SetActive(true);
         explainIsOpen = true;
     }

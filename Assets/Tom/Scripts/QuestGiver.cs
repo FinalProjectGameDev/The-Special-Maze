@@ -18,12 +18,14 @@ public class QuestGiver : MonoBehaviour
     public GameObject close;
     public UIController UIC;
     public string typePlayer;
+    public bool wasClosed;
 
     void Awake()
     {
         currIndex = -1;
         typePlayer = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
         openExplain();
+        wasClosed = false;
     }
 
     public void openWindow(Quest[] givenArr)
@@ -74,6 +76,10 @@ public class QuestGiver : MonoBehaviour
 
     public void closeWindow()
     {
+        if(!wasClosed) {
+            wasClosed = true;
+            UIC.openTutorial();
+        }
         while(currExplain.next)
         {
             currIndex++;

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+using System.IO;
+using System.IO.Compression;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+
 [Flags]
 public enum WallState
 {
@@ -270,9 +275,18 @@ public static class MazeGenerator
 
         maze[29, 15] &= ~WallState.RIGHT;
 
+        for (int i = 0; i < 30; ++i)
+        {
+            for (int j = 0; j < 20; ++j)
+            {
+                Debug.Log(maze[i, j].GetHashCode());
+            }
+        }
+
         return ApplyRecursiveBacktracker(maze);
 
         
 
     }
+    
 }
