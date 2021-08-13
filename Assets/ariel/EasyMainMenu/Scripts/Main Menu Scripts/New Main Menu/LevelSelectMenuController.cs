@@ -54,6 +54,7 @@ namespace EMM
 
         public void PlayLevel()
         {
+ 
             //open the level which is selected via level select
             PlayerPrefs.SetString("sceneToLoad", _currentSelectedLevelSceneName);
 
@@ -63,6 +64,12 @@ namespace EMM
             //load level via fader
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeIntoLevel("LoadingScreen");
+      
+        }
+
+        public void playBackgroundMusic()
+        {
+            EasyAudioUtility.instance.Play("Background music");
         }
 
     }
@@ -75,4 +82,5 @@ namespace EMM
         public string SceneToLoad;
         public Sprite LevelSprite;
     }
+    
 }

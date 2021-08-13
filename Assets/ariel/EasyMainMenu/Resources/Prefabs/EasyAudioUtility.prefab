@@ -78,6 +78,22 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 1
     source: {fileID: 0}
+  - name: Dog
+    clip: {fileID: 8300000, guid: a2641f2adb8c36640872e90a943abf68, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Background music
+    clip: {fileID: 8300000, guid: 93bdbc63c5f802b46921441e729ef863, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    source: {fileID: 0}
 --- !u!114 &114902284770409860
 MonoBehaviour:
   m_ObjectHideFlags: 0
