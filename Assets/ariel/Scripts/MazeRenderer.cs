@@ -182,5 +182,56 @@ public class MazeRenderer : MonoBehaviour
                 }
             }
         }
+
+        for (int i = 0; i < located.Length; i++)
+        {
+            if(located[i] == false)
+            {
+
+                if (i == 0)
+                {
+                    var cell = maze[9, 4];
+                    var position = new Vector3((-14.5f + 9) * size, 0, (-9.5f + 4) * size);
+                    located[0] = true;
+                    Dog.transform.position = position - new Vector3(0, 1.45f, 0);
+                    if (!cell.HasFlag(WallState.RIGHT)) Dog.transform.eulerAngles = new Vector3(0, 90, 0);
+                    else if (!cell.HasFlag(WallState.DOWN)) Dog.transform.eulerAngles = new Vector3(0, 180, 0);
+                    else if (!cell.HasFlag(WallState.LEFT)) Dog.transform.eulerAngles = new Vector3(0, 270, 0);
+
+                    Dog.GetComponent<DogController>().player = GameObject.FindGameObjectWithTag("Player").transform;
+                }
+                else if (i == 1)
+                {
+                    var position = new Vector3((-14.5f + 4) * size, 0, (-9.5f + 9) * size);
+                    located[1] = true;
+                    Dictionary.transform.position = position - new Vector3(0, 1.45f, 0);
+                    DictManeger.transform.position = position - new Vector3(0, 1.45f, 0);
+                }
+                // else if (i == 2)
+                // {
+                //     located[2] = true;
+                //     var med = Instantiate(Medical, transform);
+                //     med.transform.position = position;
+                // }
+                else if (i == 3)
+                {
+                    var position = new Vector3((-14.5f + 9) * size, 0, (-9.5f + 14) * size);
+                    located[3] = true;
+                    HearingAid.transform.position = position - new Vector3(0, 1.45f, 0); ;
+                }
+                else if (i == 4)
+                {
+                    var position = new Vector3((-14.5f + 14) * size, 0, (-9.5f + 19) * size);
+                    located[4] = true;
+                    Glasses.transform.position = position - new Vector3(0, 1.35f, 0);
+                }
+                else if (i == 5)
+                {
+                    var position = new Vector3((-14.5f + 19) * size, 0, (-9.5f + 10) * size);
+                    located[5] = true;
+                    Hendle.transform.position = position - new Vector3(0, 1.45f, 0);
+                }
+            }
+        }
     }
 }
