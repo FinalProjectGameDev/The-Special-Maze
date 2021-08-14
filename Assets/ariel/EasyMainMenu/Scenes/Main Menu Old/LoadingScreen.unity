@@ -1025,15 +1025,9 @@ MonoBehaviour:
   showImageTransition: 1
   showRandomImageTransition: 1
   LoadingScreenImages:
-  - {fileID: 21300000, guid: c45cb7a148ed2404e86aeb790cf7baf3, type: 3}
-  - {fileID: 21300000, guid: fa910eba8085ded4a96d8040be66954a, type: 3}
-  - {fileID: 21300000, guid: 6c54ae62a472f4d4ab4da8cc84a1433a, type: 3}
-  - {fileID: 21300000, guid: 3bb934bac99ecb749b9221265740fefb, type: 3}
-  - {fileID: 21300000, guid: 6c2cae975b088fc4dbfa9d686a1e979b, type: 3}
-  - {fileID: 21300000, guid: 7f6d668a50e30e041931c858d39f6f73, type: 3}
-  - {fileID: 21300000, guid: d7e8784c625dec347972ebfa44eec65d, type: 3}
-  - {fileID: 21300000, guid: 525938e7715a25a44a48f5c9d3feaf63, type: 3}
-  - {fileID: 21300000, guid: 949b77762a0b0ba4b93ea061271e1b6a, type: 3}
+  - {fileID: 21300000, guid: 5b1f05b3776908441b31b4225b95ee7e, type: 3}
+  - {fileID: 21300000, guid: 0684fd878e871a64a8dcd2c1f1ca9ae7, type: 3}
+  - {fileID: 21300000, guid: 5478a5f2adb96954899ec6b0f926b096, type: 3}
   transitionDuration: 3
   transitionFader: {fileID: 538715408}
   showContinueText: 1

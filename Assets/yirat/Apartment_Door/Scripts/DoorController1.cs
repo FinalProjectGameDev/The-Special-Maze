@@ -14,6 +14,7 @@ public class DoorController1 : MonoBehaviour
     private BoxCollider doorCollider;           //To enable the player to go through the door if door is opened else block him
 
     public DogController dog;
+    public Animator dogAnim;
 
     enum DoorState
     {
@@ -109,7 +110,8 @@ public class DoorController1 : MonoBehaviour
         gotKey = true;
         Debug.Log("Keyboard success");
         StartCoroutine(dog.GetComponent<DogController>().nextDestination());
-
+        dogAnim.SetBool("Found", true);
+        dogAnim.GetComponent<AudioSource>().Stop();
     }
 
     void OnGUI()
