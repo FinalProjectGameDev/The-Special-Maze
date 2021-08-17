@@ -91,7 +91,7 @@ public static class MazeGenerator
             maze[current.X, current.Y] |= WallState.ENTERED;
         }
 
-        
+
 
         return maze;
     }
@@ -153,140 +153,53 @@ public static class MazeGenerator
     public static WallState[,] Generate()
     {
         WallState[,] maze = new WallState[30, 20];
-        WallState initial = WallState.RIGHT | WallState.LEFT | WallState.UP | WallState.DOWN;
-        for (int i = 0; i < 30; ++i)
-        {
-            for (int j = 0; j < 20; ++j)
-            {
-                maze[i, j] = initial;  // 1111
-                if (i % 10 == 9) maze[i, j] |= WallState.RK;
-                if (i % 10 == 0) maze[i, j] |= WallState.LK;
 
-            }
-            if (i % 10 != 5)
+        string path = @"Assets/maze.csv";
+        // Get the file's text.
+        string whole_file = System.IO.File.ReadAllText(path);
+
+        // Split into lines.
+        whole_file = whole_file.Replace('\n', '\r');
+        string[] lines = whole_file.Split(new char[] { '\r' },
+            StringSplitOptions.RemoveEmptyEntries);
+
+        // See how many rows and columns there are.
+        int num_rows = lines.Length;
+        int num_cols = lines[0].Split(',').Length;
+
+        // Allocate the data array.
+        string[,] values = new string[num_rows, num_cols];
+
+        // Load the array.
+        for (int r = 0; r < num_rows; r++)
+        {
+            string[] line_r = lines[r].Split(',');
+            for (int c = 0; c < num_cols; c++)
             {
-                maze[i, 9] |= WallState.UK;
-                maze[i, 10] |= WallState.DK;
+                maze[r, c] = (WallState)Int32.Parse(line_r[c]);
             }
         }
 
-        maze[9, 15] &= ~WallState.RK;
-        maze[10, 15] &= ~WallState.LK;
 
-        maze[19, 5] &= ~WallState.RK;
-        maze[20, 5] &= ~WallState.LK;
-
-        maze[5, 10] |= WallState.RK;
-        maze[4, 11] |= WallState.RK;
-        maze[4, 12] |= WallState.RK;
-        maze[4, 13] |= WallState.RK;
-        maze[4, 14] |= WallState.RK;
-        maze[4, 15] |= WallState.RK;
-        maze[4, 16] |= WallState.RK;
-        maze[4, 17] |= WallState.RK;
-        maze[4, 18] |= WallState.RK;
-        maze[5, 11] |= WallState.RK;
-        maze[5, 12] |= WallState.RK;
-        maze[5, 13] |= WallState.RK;
-
-        maze[5, 11] |= WallState.LK;
-        maze[5, 12] |= WallState.LK;
-        maze[5, 13] |= WallState.LK;
-        maze[5, 14] |= WallState.LK;
-        maze[5, 15] |= WallState.LK;
-        maze[5, 16] |= WallState.LK;
-        maze[5, 17] |= WallState.LK;
-        maze[5, 18] |= WallState.LK;
-        maze[6, 10] |= WallState.LK;
-        maze[6, 11] |= WallState.LK;
-        maze[6, 12] |= WallState.LK;
-        maze[6, 13] |= WallState.LK;
-
-        maze[5, 10] |= WallState.UK;
-        maze[5, 14] |= WallState.UK;
-        maze[6, 14] |= WallState.UK;
-        maze[6, 15] |= WallState.UK;
-        maze[7, 14] |= WallState.UK;
-        maze[7, 15] |= WallState.UK;
-        maze[8, 14] |= WallState.UK;
-        maze[8, 15] |= WallState.UK;
-        maze[9, 15] |= WallState.UK;
-
-        maze[5, 11] |= WallState.DK;
-        maze[5, 15] |= WallState.DK;
-        maze[6, 15] |= WallState.DK;
-        maze[6, 16] |= WallState.DK;
-        maze[7, 15] |= WallState.DK;
-        maze[7, 16] |= WallState.DK;
-        maze[8, 15] |= WallState.DK;
-        maze[8, 16] |= WallState.DK;
-        maze[9, 16] |= WallState.DK;
-
-        maze[25, 10] |= WallState.RK;
-        maze[24, 11] |= WallState.RK;
-        maze[24, 12] |= WallState.RK;
-        maze[24, 13] |= WallState.RK;
-        maze[24, 14] |= WallState.RK;
-        maze[24, 15] |= WallState.RK;
-        maze[24, 16] |= WallState.RK;
-        maze[24, 17] |= WallState.RK;
-        maze[24, 18] |= WallState.RK;
-        maze[25, 11] |= WallState.RK;
-        maze[25, 12] |= WallState.RK;
-        maze[25, 13] |= WallState.RK;
-
-        maze[25, 11] |= WallState.LK;
-        maze[25, 12] |= WallState.LK;
-        maze[25, 13] |= WallState.LK;
-        maze[25, 14] |= WallState.LK;
-        maze[25, 15] |= WallState.LK;
-        maze[25, 16] |= WallState.LK;
-        maze[25, 17] |= WallState.LK;
-        maze[25, 18] |= WallState.LK;
-        maze[26, 10] |= WallState.LK;
-        maze[26, 11] |= WallState.LK;
-        maze[26, 12] |= WallState.LK;
-        maze[26, 13] |= WallState.LK;
-
-        maze[25, 10] |= WallState.UK;
-        maze[25, 14] |= WallState.UK;
-        maze[26, 14] |= WallState.UK;
-        maze[26, 15] |= WallState.UK;
-        maze[27, 14] |= WallState.UK;
-        maze[27, 15] |= WallState.UK;
-        maze[28, 14] |= WallState.UK;
-        maze[28, 15] |= WallState.UK;
-        maze[29, 15] |= WallState.UK;
-
-        maze[25, 11] |= WallState.DK;
-        maze[25, 15] |= WallState.DK;
-        maze[26, 15] |= WallState.DK;
-        maze[26, 16] |= WallState.DK;
-        maze[27, 15] |= WallState.DK;
-        maze[27, 16] |= WallState.DK;
-        maze[28, 15] |= WallState.DK;
-        maze[28, 16] |= WallState.DK;
-        maze[29, 16] |= WallState.DK;
-
-        maze[5, 10] &= ~WallState.UP;
-        maze[25, 10] &= ~WallState.UP;
-        maze[5, 11] &= ~WallState.DOWN;
-        maze[25, 11] &= ~WallState.DOWN;
-
-        maze[29, 15] &= ~WallState.RIGHT;
-
-        // for (int i = 0; i < 30; ++i)
+        // // Use a StringBuilder to accumulate your output
+        // StringBuilder sb = new StringBuilder();
+        // for (int i = 0; i <= maze.GetUpperBound(0); i++)
         // {
-        //     for (int j = 0; j < 20; ++j)
+        //     for (int j = 0; j <= maze.GetUpperBound(1); j++)
         //     {
-        //         Debug.Log(maze[i, j].GetHashCode());
+        //         sb.Append((j == 0 ? "" : ",") + maze[i, j].GetHashCode());
         //     }
+        //     sb.AppendLine();
         // }
+
+        // string path = @"/maze.csv";
+        // Debug.Log(path);
+
+        // // Write everything with a single command 
+        // File.WriteAllText(path, sb.ToString());
 
         return ApplyRecursiveBacktracker(maze);
 
-        
-
     }
-    
+
 }
