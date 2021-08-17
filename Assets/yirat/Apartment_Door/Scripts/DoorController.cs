@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DoorController : MonoBehaviour
@@ -129,8 +131,13 @@ public class DoorController : MonoBehaviour
         doorOpened = true;
         gotKey = true;
         Debug.Log("Keyboard success");
-        StartCoroutine(dog.GetComponent<DogController>().nextDestination());
+        StartCoroutine(loadMainMenuScene());
+    }
 
+    IEnumerator loadMainMenuScene()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(0);
     }
 
     void OnGUI()
