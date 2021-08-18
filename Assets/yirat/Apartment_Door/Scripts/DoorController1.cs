@@ -16,6 +16,8 @@ public class DoorController1 : MonoBehaviour
     public DogController dog;
     public Animator dogAnim;
 
+    public hasDict hd;
+
     enum DoorState
     {
         Closed,
@@ -42,9 +44,9 @@ public class DoorController1 : MonoBehaviour
         //If Key is needed and the KeyGameObject is not assigned, stop playing and throw error
         //if (keyNeeded && keyGameObject == null)
         //{
-            //UnityEditor.EditorApplication.isPlaying = false;
-            //Debug.LogError("Assign Key GameObject");
-       // }
+        //UnityEditor.EditorApplication.isPlaying = false;
+        //Debug.LogError("Assign Key GameObject");
+        // }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,7 +74,7 @@ public class DoorController1 : MonoBehaviour
                 {
                     doorCollider.enabled = true;
                 }
-            }   
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E) && playerInZone)
@@ -112,6 +114,7 @@ public class DoorController1 : MonoBehaviour
         StartCoroutine(dog.GetComponent<DogController>().nextDestination());
         dogAnim.SetBool("Found", true);
         dogAnim.GetComponent<AudioSource>().Stop();
+        hd.passedFirstDoor = true;
     }
 
     void OnGUI()

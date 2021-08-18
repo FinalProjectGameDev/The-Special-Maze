@@ -19,6 +19,9 @@ public class SetPlayer : MonoBehaviour
     public GameObject Blindness;
     public GameObject Wheelchair;
 
+    public GameObject stepToHide1;
+    public GameObject stepToHide2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,9 +46,9 @@ public class SetPlayer : MonoBehaviour
                 Blindness.SetActive(true);
                 cam.gameObject.SetActive(true);
                 PostProcessLayer layer = cam.GetComponent<PostProcessLayer>();
-                layer.enabled = true; 
+                layer.enabled = true;
                 //PostProcessLayer mmlayer = minimap.GetComponent<PostProcessLayer>();
-               // mmlayer.enabled = true;
+                // mmlayer.enabled = true;
                 minimap.GetComponent<Minimap>().player = Blindness.transform;
                 Blindness.GetComponent<AudioListener>().enabled = true;
                 break;
@@ -54,6 +57,8 @@ public class SetPlayer : MonoBehaviour
                 camWheel.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Wheelchair.transform;
                 Wheelchair.GetComponent<AudioListener>().enabled = true;
+                stepToHide1.SetActive(false);
+                stepToHide2.SetActive(false);
                 break;
         }
         focuscam.gameObject.SetActive(true);

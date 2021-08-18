@@ -58,38 +58,39 @@ public class DogController : MonoBehaviour
         }
         if (player)
         {
-           RaycastHit hit;
-           var rayDirection = (player.position+ new Vector3(0,0.9f,0)) - (transform.position + new Vector3(0,0.7f,0));
-           if (Physics.Raycast(transform.position + new Vector3(0,0.7f,0), rayDirection, out hit))
-           {
-               Debug.DrawLine(transform.position + new Vector3(0,0.7f,0), hit.point);
-               if (hit.transform == player)
-               {
+            RaycastHit hit;
+            var rayDirection = (player.position + new Vector3(0, 0.3f, 0)) - (transform.position + new Vector3(0, 0.7f, 0));
+            if (Physics.Raycast(transform.position + new Vector3(0, 0.7f, 0), rayDirection, out hit))
+            {
+                Debug.DrawLine(transform.position + new Vector3(0, 0.7f, 0), hit.point);
+                if (hit.transform.tag == "Player")
+                {
 
-                   // enemy can see the player!
-                   agent.isStopped = false;
-                   seeing = true;
-               }
-               else
-               {
-                //    Debug.Log(hit.transform);
+                    // enemy can see the player!
+                    agent.isStopped = false;
+                    seeing = true;
+                }
+                else
+                {
+                    //    Debug.Log(hit.transform);
 
-                   // there is something obstructing the view
-                   agent.isStopped = true;
-                   seeing = false;
-               }
-           }
-        //    else {
-        //        agent.isStopped = true;
-        //            seeing = false;
-        //    }
+                    // there is something obstructing the view
+                    agent.isStopped = true;
+                    seeing = false;
+                }
+            }
+            //    else {
+            //        agent.isStopped = true;
+            //            seeing = false;
+            //    }
         }
-        
+
     }
 
-    public IEnumerator  nextDestination(){
+    public IEnumerator nextDestination()
+    {
         yield return new WaitForSeconds(3);
-        currTarget++; 
+        currTarget++;
         agent.ResetPath();
         //agent.SetDestination(new Vector3(-47.5f,-1,-2));
         agent.SetDestination(targets[currTarget].position);

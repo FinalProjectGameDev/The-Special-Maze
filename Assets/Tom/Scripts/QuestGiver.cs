@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class QuestGiver : MonoBehaviour
 {
-    public Quest [] visualImpairmentScenario;
-    public Quest [] walkingDisabilityScenario;
-    public Quest [] deafScenario;
-    public Quest [] currArr;
+    public Quest[] visualImpairmentScenario;
+    public Quest[] walkingDisabilityScenario;
+    public Quest[] deafScenario;
+    public Quest[] currArr;
     public int currIndex;
     public Quest currExplain;
     public Text title;
@@ -22,19 +22,17 @@ public class QuestGiver : MonoBehaviour
 
     void Awake()
     {
-        currIndex = -1;
+        currIndex = 0;
         typePlayer = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
         openExplain();
         wasClosed = false;
     }
 
-    public void openWindow(Quest[] givenArr)
+    public void openWindow()
     {
-        currIndex++;
-        currArr = givenArr;
-        currExplain = givenArr[currIndex];
+        currExplain = currArr[currIndex];
         UIC.openExplain();
-        if(currExplain.next)
+        if (currExplain.next)
         {
             next.SetActive(true);
         }
@@ -52,7 +50,6 @@ public class QuestGiver : MonoBehaviour
         }
         title.text = currExplain.title;
         description.text = currExplain.description;
-        
     }
 
     public void openExplain()
@@ -60,44 +57,49 @@ public class QuestGiver : MonoBehaviour
         switch (typePlayer)
         {
             case "Deaf":
-               openWindow(deafScenario); 
+                currArr = deafScenario;
                 break;
-            case "Parkinson": 
+            case "Parkinson":
                 break;
             case "Blindness":
-                  openWindow(visualImpairmentScenario);
+                currArr = visualImpairmentScenario;
                 break;
             case "Wheelchair":
-                openWindow(walkingDisabilityScenario);
+                currArr = walkingDisabilityScenario;
                 break;
         }
-       
+        openWindow();
     }
 
     public void closeWindow()
     {
-        if(!wasClosed) {
+        if (!wasClosed)
+        {
             wasClosed = true;
             UIC.openTutorial();
         }
-        while(currExplain.next)
-        {
-            currIndex++;
-            currExplain = currArr[currIndex];
-        }
+        while (currExplain.next) currExplain = currArr[++currIndex];
+        currIndex++;
         UIC.closeExplain();
+    }
+
+    public void reopenExplain()
+    {
+        currIndex--;
+        while (currIndex > 0 && currArr[currIndex - 1].next) currIndex--;
+        openExplain();
     }
 
     public void nextWindow()
     {
-        openWindow(currArr);
+        currIndex++;
+        openWindow();
     }
 
     public void prevWindow()
     {
         currIndex--;
-        currIndex--;
-        openWindow(currArr);
+        openWindow();
     }
 
 }

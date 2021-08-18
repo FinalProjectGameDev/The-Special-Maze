@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIController : MonoBehaviour {
+public class UIController : MonoBehaviour
+{
 
     [Tooltip("Usee Blur in Pause Menu?")]
     public bool useBlur;
@@ -45,7 +46,8 @@ public class UIController : MonoBehaviour {
     public Camera CamToLoc;
 
     // Use this for initialization
-    IEnumerator Start () {
+    IEnumerator Start()
+    {
 
         //PlayerPrefs.DeleteAll();
 
@@ -60,7 +62,8 @@ public class UIController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (pauseIsOpen || keypadIsOpen || pianoIsOpen || dictIsOpen || explainIsOpen)
         {
             Cursor.visible = true;
@@ -68,7 +71,8 @@ public class UIController : MonoBehaviour {
             CamToLoc.GetComponent<vThirdPersonCamera>().enabled = false;
 
         }
-        else if(tutorialIsOpen){
+        else if (tutorialIsOpen)
+        {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             CamToLoc.GetComponent<vThirdPersonCamera>().enabled = true;
@@ -104,7 +108,18 @@ public class UIController : MonoBehaviour {
                     closeMinimap();
             }
         }
-	}
+
+        if (!explains.active)
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                if (!explainIsOpen)
+                    QG.reopenExplain();
+                // else
+                //     closePauseMenu();
+            }
+        }
+    }
 
     public void openMinimap()
     {
@@ -155,7 +170,7 @@ public class UIController : MonoBehaviour {
 
         tutorial.SetActive(true);
         tutorialIsOpen = true;
-        tutorialManeger.SetActive(true);        
+        tutorialManeger.SetActive(true);
     }
 
     public void closeTutorial()
@@ -177,7 +192,8 @@ public class UIController : MonoBehaviour {
         explainIsOpen = false;
     }
 
-    public void openPauseMenu() {
+    public void openPauseMenu()
+    {
 
         allUI = FindObjectsOfType<Canvas>();
         //disable all UI
@@ -219,12 +235,13 @@ public class UIController : MonoBehaviour {
     }
 
 
-    public void closePauseMenu() {
+    public void closePauseMenu()
+    {
 
         //enable all UI
         for (int i = 0; i < allUI.Length; i++)
         {
-           allUI[i].gameObject.SetActive(true);
+            allUI[i].gameObject.SetActive(true);
         }
 
 
@@ -235,26 +252,28 @@ public class UIController : MonoBehaviour {
         GetComponent<Animator>().Play("ClosePauseMenu");
         // hideMenus();
 
- 
+
         pauseIsOpen = false;
 
         //enable blur
         if (useBlur)
         {
-            if(Camera.main.GetComponent<Animator>())
-            Camera.main.GetComponent<Animator>().Play("BlurOff");
+            if (Camera.main.GetComponent<Animator>())
+                Camera.main.GetComponent<Animator>().Play("BlurOff");
         }
 
         onUnpause.Invoke();
 
     }
 
-    public void hideMenus() {
+    public void hideMenus()
+    {
         saveMenu.SetActive(false);
         pauseMenu.SetActive(false);
     }
 
-    public void goToMainMenu() {
+    public void goToMainMenu()
+    {
         //delete player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Destroy(player);
@@ -263,12 +282,12 @@ public class UIController : MonoBehaviour {
         Time.timeScale = 1f;
 
         //load main menu
-        #if !EMM_ES2
+#if !EMM_ES2
         PlayerPrefs.SetString("sceneToLoad", "");
-        #else
+#else
         PlayerPrefs.SetString("sceneToLoad", "");
         ES2.Save("", "sceneToLoad");
-        #endif
+#endif
 
         //hide all menus
         hideMenus();
@@ -277,16 +296,19 @@ public class UIController : MonoBehaviour {
         fader.FadeIntoLevel("LoadingScreen");
     }
 
-    public void openLoadGame() {
+    public void openLoadGame()
+    {
         GetComponent<Animator>().Play("loadGameOpen");
         initLoadGameMenu();
     }
 
-    public void closeLoadGame() {
+    public void closeLoadGame()
+    {
         GetComponent<Animator>().Play("loadGameClose");
     }
 
-    void initLoadGameMenu() {
+    void initLoadGameMenu()
+    {
         if (loadSlots.Count > 0)
         {
             foreach (LoadSlotIdentifier lsi in loadSlots)

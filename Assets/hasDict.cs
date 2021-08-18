@@ -5,10 +5,11 @@ using UnityEngine;
 public class hasDict : MonoBehaviour
 {
     public bool onDict;
-    public bool hasdict=false;
+    public bool hasdict = false;
+    public bool passedFirstDoor = false;
     [SerializeField] UIController UIC;
     [SerializeField] GameObject Dict;
-    
+
     void OnTriggerEnter(Collider other)
     {
         onDict = true;
@@ -34,11 +35,12 @@ public class hasDict : MonoBehaviour
                 hasdict = true;
             }
         }
-        if (hasdict)
+        if (hasdict && !passedFirstDoor)
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if(UIC.dictIsOpen){
+                if (UIC.dictIsOpen)
+                {
                     UIC.closeDict();
                 }
                 else UIC.openDict();
@@ -55,7 +57,7 @@ public class hasDict : MonoBehaviour
             gustyle.fontSize = 40;
             GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the Dictionary", gustyle);
         }
-        if (hasdict)
+        if (hasdict && !passedFirstDoor)
         {
             gustyle.fontSize = 20;
             if (!UIC.dictIsOpen)
