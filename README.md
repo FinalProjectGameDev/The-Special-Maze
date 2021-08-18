@@ -13,6 +13,10 @@ The object of the game is to increase awareness among the target audience regard
 In the game there is a choice between 4 characters, each with a different disability - Visual impairment, deafness, walking disability and Parkinson's .<br />
 all the characters will go through a maze generated and encounter the same missions, but one mission can be easy for one character and difficult for another character.
 
+## More information:
+You can see more technical information and the process of creating the game in [WIKI](https://github.com/FinalProjectGameDev/The-Special-Maze/wiki)
+
+
 ## Project partners:
 [Ariel Duek](https://github.com/ArielDuek),
 [Tom Latin](https://github.com/TomLatin) ,
