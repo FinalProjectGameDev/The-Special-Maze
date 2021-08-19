@@ -59,7 +59,9 @@ public static class MazeGenerator
         // here we make changes
         var rng = new System.Random(/*seed*/);
         var positionStack = new Stack<Position>();
-        var position = new Position { X = rng.Next(0, 30), Y = rng.Next(0, 20) };
+        // var position = new Position { X = rng.Next(0, 20), Y = rng.Next(0, 20) };
+        var position = new Position { X = 0, Y = 0 };
+
 
         maze[position.X, position.Y] |= WallState.VISITED;
         positionStack.Push(position);
@@ -136,7 +138,7 @@ public static class MazeGenerator
             }
         }
 
-        if (p.X < 29)
+        if (p.X < 19)
         {  // RIGHT
             if (!maze[p.X + 1, p.Y].HasFlag(WallState.VISITED) && !maze[p.X, p.Y].HasFlag(WallState.RK))
             {
@@ -152,9 +154,9 @@ public static class MazeGenerator
 
     public static WallState[,] Generate()
     {
-        WallState[,] maze = new WallState[30, 20];
+        WallState[,] maze = new WallState[20, 20];
 
-        string path = @"Assets/maze.csv";
+        string path = @"Assets/maze3.csv";
         // Get the file's text.
         string whole_file = System.IO.File.ReadAllText(path);
 

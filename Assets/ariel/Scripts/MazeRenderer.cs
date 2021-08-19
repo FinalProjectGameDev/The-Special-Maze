@@ -64,12 +64,12 @@ public class MazeRenderer : MonoBehaviour
     private void Draw(WallState[,] maze)
     {
 
-        for (int i = 0; i < 30; ++i)
+        for (int i = 0; i < 20; ++i)
         {
             for (int j = 0; j < 20; ++j)
             {
                 var cell = maze[i, j];
-                var position = new Vector3((-14.5f + i) * size, 0, (-9.5f + j) * size);
+                var position = new Vector3((-9.5f + i) * size, 0, (-9.5f + j) * size);
 
                 if (i % 2 == 1 && j % 2 == 0)
                 {
@@ -160,7 +160,7 @@ public class MazeRenderer : MonoBehaviour
                     leftWall.eulerAngles = new Vector3(0, 90, 0);
                 }
 
-                if (i == 30 - 1)
+                if (i == 20 - 1)
                 {
                     if (cell.HasFlag(WallState.RIGHT))
                     {
@@ -185,13 +185,13 @@ public class MazeRenderer : MonoBehaviour
 
         for (int i = 0; i < located.Length; i++)
         {
-            if(located[i] == false)
+            if (located[i] == false)
             {
 
                 if (i == 0)
                 {
                     var cell = maze[9, 4];
-                    var position = new Vector3((-14.5f + 9) * size, 0, (-9.5f + 4) * size);
+                    var position = new Vector3((-9.5f + 9) * size, 0, (-9.5f + 4) * size);
                     located[0] = true;
                     Dog.transform.position = position - new Vector3(0, 1.45f, 0);
                     if (!cell.HasFlag(WallState.RIGHT)) Dog.transform.eulerAngles = new Vector3(0, 90, 0);
@@ -202,7 +202,7 @@ public class MazeRenderer : MonoBehaviour
                 }
                 else if (i == 1)
                 {
-                    var position = new Vector3((-14.5f + 4) * size, 0, (-9.5f + 9) * size);
+                    var position = new Vector3((-9.5f + 4) * size, 0, (-9.5f + 9) * size);
                     located[1] = true;
                     Dictionary.transform.position = position - new Vector3(0, 1.45f, 0);
                     DictManeger.transform.position = position - new Vector3(0, 1.45f, 0);
@@ -215,19 +215,19 @@ public class MazeRenderer : MonoBehaviour
                 // }
                 else if (i == 3)
                 {
-                    var position = new Vector3((-14.5f + 9) * size, 0, (-9.5f + 14) * size);
+                    var position = new Vector3((-9.5f + 9) * size, 0, (-9.5f + 14) * size);
                     located[3] = true;
                     HearingAid.transform.position = position - new Vector3(0, 1.45f, 0); ;
                 }
                 else if (i == 4)
                 {
-                    var position = new Vector3((-14.5f + 14) * size, 0, (-9.5f + 19) * size);
+                    var position = new Vector3((-9.5f + 14) * size, 0, (-9.5f + 19) * size);
                     located[4] = true;
                     Glasses.transform.position = position - new Vector3(0, 1.35f, 0);
                 }
                 else if (i == 5)
                 {
-                    var position = new Vector3((-14.5f + 19) * size, 0, (-9.5f + 10) * size);
+                    var position = new Vector3((-9.5f + 19) * size, 0, (-9.5f + 10) * size);
                     located[5] = true;
                     Hendle.transform.position = position - new Vector3(0, 1.45f, 0);
                 }

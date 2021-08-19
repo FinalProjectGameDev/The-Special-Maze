@@ -6,7 +6,11 @@ using UnityEngine.Rendering.PostProcessing;
 public class hasGlasses : MonoBehaviour
 {
     public bool onGlasses;
-    public Camera cam;
+
+    public Animator player;
+    public Camera camera;
+
+    public Camera minimap;
     public GameObject glassesOnPlayer;
 
     string _currentSelectedCharName;
@@ -33,6 +37,11 @@ public class hasGlasses : MonoBehaviour
     {
         _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
 
+        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
+
         //color.color = initColor;
         //matArr = bodyGlasses.GetComponent<MeshRenderer>().materials;
         //matArr[0].color = initColor;
@@ -43,13 +52,15 @@ public class hasGlasses : MonoBehaviour
     void Update()
     {
         if (onGlasses && Input.GetKeyDown(KeyCode.E))
-        { 
-                cam.gameObject.SetActive(true);
-                PostProcessLayer layer = cam.GetComponent<PostProcessLayer>();
-                layer.enabled = false;
-                this.gameObject.SetActive(false);
-                glassesOnPlayer.SetActive(true);
-            
+        {
+            camera.gameObject.SetActive(true);
+            PostProcessLayer layer = camera.GetComponent<PostProcessLayer>();
+            layer.enabled = false;
+            PostProcessLayer mmlayer = minimap.GetComponent<PostProcessLayer>();
+            mmlayer.enabled = false;
+            this.gameObject.SetActive(false);
+            glassesOnPlayer.SetActive(true);
+            // if (player) player.Play("Lifting");
         }
     }
 
@@ -65,7 +76,7 @@ public class hasGlasses : MonoBehaviour
             //}
             //else
             //{
-                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the glasses", gustyle);
+            GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the glasses", gustyle);
             //}
         }
     }
