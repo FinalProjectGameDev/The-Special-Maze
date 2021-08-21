@@ -67,11 +67,6 @@ namespace EMM
       
         }
 
-        public void playBackgroundMusic()
-        {
-            EasyAudioUtility.instance.Play("Background music");
-        }
-
     }
 
     [System.Serializable]

@@ -109,35 +109,29 @@ public class PianoDoorController : MonoBehaviour
                 doorState = DoorState.Opened;
             }
         }
-        if(index == 3)
-        {
-            index = -1;
-            gotKey = true;
-            for (int i = 0; i < fourSounds.Length; i++)
-            {
-                if (!fourSounds[i].Equals(MusicAfterPressButton.fourSounds[i]))
-                {
-                    gotKey = false;
-                    wrongAnswer.Play();
-                }
-            }
-            if (gotKey) { 
-                correctAnswer.Play();
-                UIC.closePiano();
-            }           
-        }
+    }
 
-        // if(UIC.pianoIsOpen)
-        // {
-        //     index = -1;
-        // }
+    public void setIndex()
+    {
+        index = -1;
+        Debug.Log(index);
     }
 
     public void setNotes(AudioSource audioSource)
     {
-        index += 1 ;
-        Debug.Log(index);
-        fourSounds[index] = audioSource;
+        if (!audioSource.Equals(MusicAfterPressButton.fourSounds[++index]))
+        {
+            wrongAnswer.Play();
+            setIndex();
+        }
+        else if(index == 3)
+        {
+            gotKey = true;
+            correctAnswer.Play();
+            UIC.closePiano();
+            setIndex();
+        }
+        else Debug.Log(index);
     }
 
     void OnGUI()

@@ -2197,9 +2197,9 @@ MonoBehaviour:
   - {fileID: 56851356}
   - {fileID: 1123874765}
   - {fileID: 72168511}
-  pianoCanvas: {fileID: 1572078937}
   onButton: 0
   pianoDoorController: {fileID: 2890728700818405461}
+  UIC: {fileID: 0}
 --- !u!65 &157192585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5941,6 +5941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa63187ca8c44c41bff47772197df29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pianoDoorController: {fileID: 2890728700818405461}
 --- !u!1 &928357213
 GameObject:
   m_ObjectHideFlags: 0
@@ -8358,7 +8359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1572078935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12150,7 +12151,9 @@ MonoBehaviour:
   playerInZone: 0
   correctAnswer: {fileID: 77071117}
   wrongAnswer: {fileID: 835242802}
-  pianoCanvas: {fileID: 1572078937}
+  UIC: {fileID: 0}
+  dog: {fileID: 0}
+  QG: {fileID: 0}
   musicAfterPressButton: {fileID: 157192583}
 --- !u!1 &2890964734634480386
 GameObject:

@@ -88,7 +88,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Background music
     clip: {fileID: 8300000, guid: 93bdbc63c5f802b46921441e729ef863, type: 3}
-    volume: 1
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

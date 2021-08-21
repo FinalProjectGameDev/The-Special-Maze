@@ -325,6 +325,7 @@ public class LoadingScreen : MonoBehaviour {
         Animator Fader = GameObject.Find("Fader").GetComponent<Animator>();
         Fader.GetComponent<Animator>().Play("Fader In");
         Invoke("load", 1f);
+        EasyAudioUtility.instance.Play("Background music");
     }
 
     void load() {

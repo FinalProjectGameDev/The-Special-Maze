@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayAgainNotes : MonoBehaviour
 {
+    [SerializeField]
+    PianoDoorController pianoDoorController;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,7 @@ public class PlayAgainNotes : MonoBehaviour
     public void RoutineWrap()
     {
         StartCoroutine(playSound());
+        pianoDoorController.setIndex();
     }
 
     IEnumerator playSound()
