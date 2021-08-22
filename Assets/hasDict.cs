@@ -7,6 +7,9 @@ public class hasDict : MonoBehaviour
     public bool onDict;
     public bool hasdict = false;
     public bool passedFirstDoor = false;
+    public Animator player;
+
+    string _currentSelectedCharName;
     [SerializeField] UIController UIC;
     [SerializeField] GameObject Dict;
 
@@ -23,6 +26,11 @@ public class hasDict : MonoBehaviour
     void Start()
     {
         UIC.closeDict();
+
+        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
     }
 
     void Update()
@@ -33,6 +41,7 @@ public class hasDict : MonoBehaviour
             {
                 Dict.gameObject.SetActive(false);
                 hasdict = true;
+                if (player) player.SetTrigger("lift");
             }
         }
         if (hasdict && !passedFirstDoor)

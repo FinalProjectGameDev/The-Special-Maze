@@ -14,6 +14,11 @@ public class WordExposure : MonoBehaviour
     public int theChoosenNum;
     public bool onButton;
 
+    public Animator player;
+
+    string _currentSelectedCharName;
+
+
     void OnTriggerEnter(Collider other)
     {
         onButton = true;
@@ -29,6 +34,13 @@ public class WordExposure : MonoBehaviour
     {
         generateRandomNumber = gameObjectGenerateRandomNumber.GetComponent<GenerateRandomNumber>();
         theChoosenNum = generateRandomNumber.theChoosenNum;
+
+        _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+
+        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
     }
 
     // Update is called once per frame
@@ -38,8 +50,9 @@ public class WordExposure : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (player) player.SetTrigger("push");
                 Debug.Log("E Preessed");
-                if(!images[theChoosenNum].gameObject.activeSelf)
+                if (!images[theChoosenNum].gameObject.activeSelf)
                 {
                     images[theChoosenNum].gameObject.SetActive(true);
                     //Cursor.visible = true;

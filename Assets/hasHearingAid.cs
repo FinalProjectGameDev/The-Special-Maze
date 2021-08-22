@@ -24,17 +24,23 @@ public class hasHearingAid : MonoBehaviour
     void Start()
     {
         _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+
+        if (_currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (onAid && Input.GetKeyDown(KeyCode.E))
-        { 
-                //cam.GetComponent<AudioListener>().enabled = true;
-                player.GetComponent<AudioListener>().enabled = true;
-                this.gameObject.SetActive(false);
-                AidOnPlayer.SetActive(true);
+        {
+            if (player) player.GetComponent<Animator>().SetTrigger("lift");
+            player.GetComponent<AudioListener>().enabled = true;
+            this.gameObject.SetActive(false);
+            AidOnPlayer.SetActive(true);
         }
     }
 
@@ -44,7 +50,7 @@ public class hasHearingAid : MonoBehaviour
         gustyle.fontSize = 40;
         if (onAid)
         {
-                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the Hearing Aid", gustyle);
+            GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the Hearing Aid", gustyle);
         }
     }
 }

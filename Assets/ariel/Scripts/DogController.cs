@@ -59,7 +59,7 @@ public class DogController : MonoBehaviour
         if (player)
         {
             RaycastHit hit;
-            var rayDirection = (player.position + new Vector3(0, 0.5f, 0)) - (transform.position + new Vector3(0, 0.7f, 0));
+            var rayDirection = (player.position + new Vector3(0, 0.9f, 0)) - (transform.position + new Vector3(0, 0.7f, 0));
             if (Physics.Raycast(transform.position + new Vector3(0, 0.7f, 0), rayDirection, out hit))
             {
                 Debug.DrawLine(transform.position + new Vector3(0, 0.7f, 0), hit.point);

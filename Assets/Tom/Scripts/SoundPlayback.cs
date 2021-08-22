@@ -14,6 +14,10 @@ public class SoundPlayback : MonoBehaviour
     public int theChoosenNum;
     public bool onButton;
 
+    public Animator player;
+
+    string _currentSelectedCharName;
+
     void OnTriggerEnter(Collider other)
     {
         onButton = true;
@@ -29,6 +33,13 @@ public class SoundPlayback : MonoBehaviour
     {
         generateRandomNumber = gameObjectGenerateRandomNumber.GetComponent<GenerateRandomNumber>();
         theChoosenNum = generateRandomNumber.theChoosenNum;
+
+        _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+
+        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
     }
 
     // Update is called once per frame
@@ -38,13 +49,14 @@ public class SoundPlayback : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (player) player.SetTrigger("push");
                 Debug.Log("Played");
                 sounds[theChoosenNum].Play();
             }
         }
     }
-        
-        
+
+
     void OnGUI()
     {
         GUIStyle gustyle = new GUIStyle(GUI.skin.box);

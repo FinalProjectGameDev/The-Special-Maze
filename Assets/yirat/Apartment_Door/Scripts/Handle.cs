@@ -9,11 +9,22 @@ public class Handle : MonoBehaviour
     private BoxCollider handleCollider;
     public DoorController DC;
 
+    public Animator player;
+
+    string _currentSelectedCharName;
+
     // Start is called before the first frame update
     void Start()
     {
         handleCollider = transform.gameObject.GetComponent<BoxCollider>();
         playerInZone = false;                   //Player not in zone
+
+        _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+
+        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,6 +49,7 @@ public class Handle : MonoBehaviour
         {
             if (this.gameObject.activeSelf)
             {
+                if (player) player.SetTrigger("lift");
                 this.gameObject.SetActive(false);
                 playerInZone = false;
                 DC.gotKey = true;

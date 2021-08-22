@@ -37,7 +37,7 @@ public class hasGlasses : MonoBehaviour
     {
         _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
 
-        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        if (_currentSelectedCharName == "Blindness")
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         }
@@ -53,6 +53,7 @@ public class hasGlasses : MonoBehaviour
     {
         if (onGlasses && Input.GetKeyDown(KeyCode.E))
         {
+            if (player) player.SetTrigger("lift");
             camera.gameObject.SetActive(true);
             PostProcessLayer layer = camera.GetComponent<PostProcessLayer>();
             layer.enabled = false;
@@ -60,7 +61,7 @@ public class hasGlasses : MonoBehaviour
             mmlayer.enabled = false;
             this.gameObject.SetActive(false);
             glassesOnPlayer.SetActive(true);
-            // if (player) player.Play("Lifting");
+
         }
     }
 

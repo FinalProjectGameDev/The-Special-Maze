@@ -15,6 +15,10 @@ public class MusicAfterPressButton : MonoBehaviour
     public PianoDoorController pianoDoorController;
     public UIController UIC;
 
+    public Animator player;
+
+    string _currentSelectedCharName;
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -33,6 +37,12 @@ public class MusicAfterPressButton : MonoBehaviour
             int index = Random.Range(0, 18);
             fourSounds[i] = allSounds[index];
         }
+        _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+
+        if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
     }
 
     void Update()
@@ -41,6 +51,7 @@ public class MusicAfterPressButton : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (player) player.SetTrigger("push");
                 onButton = false;
                 pianoDoorController.playerInZone = false;
                 RoutineWrap();
@@ -55,7 +66,7 @@ public class MusicAfterPressButton : MonoBehaviour
 
     IEnumerator playSound()
     {
-        for (int i = 0; i< fourSounds.Length; i++)
+        for (int i = 0; i < fourSounds.Length; i++)
         {
             fourSounds[i].Play();
             Debug.Log(fourSounds[i].name);
