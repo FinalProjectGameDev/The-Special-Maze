@@ -2597,7 +2597,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!1 &447345952
@@ -4216,7 +4216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626056618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: -0.649, z: 22.2}
+  m_LocalPosition: {x: -47.5, y: -0.649, z: -47.5}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 6559221623313117136}
@@ -7852,7 +7852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1048487610
 Transform:
   m_ObjectHideFlags: 0
@@ -8314,7 +8314,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!1 &1080571387
@@ -41523,12 +41523,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualImpairmentScenario:
-  - title: Welcome
-    description: 'You have arrived at a special maze game! Your goal is to get out
-      of the maze, When during the maze you will encounter different and varied challenges. '
+  - title: 
+    description: Welcome to the special maze game! Try to get out of the maze and
+      go through all the missions on the way out.
     next: 1
     Prev: 0
-  - title: 'Explanation of the character '
+  - title: 'About the character '
     description: 'Your character has a visual impairment, Which is expressed in heavy
       blurring '
     next: 1
@@ -41537,7 +41537,7 @@ MonoBehaviour:
     description: 'Did you hear the dog? Find him and follow him '
     next: 0
     Prev: 1
-  - title: 'Explanation of a task '
+  - title: How to open the door?
     description: 'Press the play button,and enter the code '
     next: 0
     Prev: 0
@@ -41545,48 +41545,7 @@ MonoBehaviour:
     description: 'Well done for completing the mission '
     next: 0
     Prev: 0
-  - title: 'Explanation of a task '
-    description: 'Listen to music and press the notes in order '
-    next: 0
-    Prev: 0
-  - title: Well done for completing the mission
-    description: 
-    next: 1
-    Prev: 0
-  - title: 'Hint '
-    description: 'Find the next door handle in the maze and the glasses in the maze 
-      Explanation of a task '
-    next: 0
-    Prev: 1
-  - title: Explanation of a task
-    description: 'Attach the handle you found, Note if your character with a visual
-      impairment is in need of glasses '
-    next: 0
-    Prev: 0
-  - title: 
-    description: Well done for getting out of the maze!
-    next: 0
-    Prev: 0
-  walkingDisabilityScenario:
-  - title: 'Welcome '
-    description: 'You have arrived at a special maze game! Your goal is to get out
-      of the maze, When during the maze you will encounter different and varied challenges '
-    next: 1
-    Prev: 0
-  - title: Explanation of the character
-    description: 'Your character has a walking disability,  He can not walk and moves
-      around in a wheelchair. '
-    next: 0
-    Prev: 0
-  - title: 'Explanation of a task '
-    description: 'Press the play button,and enter the code '
-    next: 0
-    Prev: 0
-  - title: 
-    description: 'Well done for completing the mission '
-    next: 0
-    Prev: 0
-  - title: 'Explanation of a task '
+  - title: How to open the door?
     description: 'Listen to music and press the notes in order '
     next: 0
     Prev: 0
@@ -41594,15 +41553,52 @@ MonoBehaviour:
     description: Well done for completing the mission
     next: 1
     Prev: 0
-  - title: 
-    description: 
+  - title: 'Hint '
+    description: 'Find the next door handle and the glasses in the maze  '
     next: 0
+    Prev: 1
+  - title: How to open the door?
+    description: 'Attach the handle you found, Note if your character with a visual
+      impairment is in need of glasses '
+    next: 0
+    Prev: 0
+  - title: How to open the door?
+    description: 'Attach the handle you found, Note if your character with a visual
+      impairment is in need of glasses '
+    next: 0
+    Prev: 0
+  walkingDisabilityScenario:
+  - title: ' '
+    description: Welcome to the special maze game! Try to get out of the maze and
+      go through all the missions on the way out.
+    next: 1
+    Prev: 0
+  - title: About the character
+    description: 'Your character has a walking disability,  He can not walk and moves
+      around in a wheelchair. '
+    next: 0
+    Prev: 0
+  - title: How to open the door?
+    description: 'Press the play button,and enter the code '
+    next: 0
+    Prev: 0
+  - title: 
+    description: 'Well done for completing the mission '
+    next: 0
+    Prev: 0
+  - title: How to open the door?
+    description: 'Listen to music and press the notes in order '
+    next: 0
+    Prev: 0
+  - title: 
+    description: Well done for completing the mission
+    next: 1
     Prev: 0
   - title: 'Hint '
     description: 'Find the next door handle in the maze '
     next: 0
     Prev: 0
-  - title: 'Explanation of a task '
+  - title: How to open the door?
     description: 'Attach the handle you found '
     next: 0
     Prev: 0
@@ -41611,12 +41607,12 @@ MonoBehaviour:
     next: 0
     Prev: 0
   deafScenario:
-  - title: Welcome
-    description: 'You have arrived at a special maze game! Your goal is to get out
-      of the maze, When during the maze you will encounter different and varied challenges  '
+  - title: 
+    description: Welcome to the special maze game! Try to get out of the maze and
+      go through all the missions on the way out.
     next: 1
     Prev: 0
-  - title: 'Explanation of the character '
+  - title: 'About the character '
     description: Your character is deaf
     next: 1
     Prev: 1
@@ -41624,19 +41620,19 @@ MonoBehaviour:
     description: 'Find the dictionary that will help you get through the door '
     next: 0
     Prev: 1
-  - title: 'Explanation of a task '
+  - title: How to open the door?
     description: 'Click the Accessibility button,and enter the code '
     next: 0
     Prev: 0
-  - title: 'Well done for completing the mission '
-    description: 
+  - title: 
+    description: 'Well done for completing the mission '
     next: 1
     Prev: 0
   - title: 'Hint '
     description: 'Find a hearing aid '
     next: 0
     Prev: 1
-  - title: 'Explanation of a task '
+  - title: How to open the door?
     description: 'Listen to music and press the notes in order '
     next: 0
     Prev: 0
@@ -41648,11 +41644,11 @@ MonoBehaviour:
     description: 'Find the next door handle in the maze '
     next: 0
     Prev: 1
-  - title: 'Explanation of a task '
+  - title: How to open the door?
     description: 'Attach the handle you found '
     next: 0
     Prev: 0
-  - title: You WIN The Game!!
+  - title: 
     description: 'Well done for getting out of the maze! '
     next: 0
     Prev: 0
@@ -69148,7 +69144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!223 &8724562720654489950
 Canvas:
   m_ObjectHideFlags: 0
