@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LoadingScreen : MonoBehaviour {
+public class LoadingScreen : MonoBehaviour
+{
 
     #region Variables
 
@@ -12,7 +13,7 @@ public class LoadingScreen : MonoBehaviour {
     public string sceneToLoad;
 
     [Header("Loading Bar")]
-    
+
     [Tooltip("Loading Bar")]
     public Slider loadingBar;
     [Tooltip("Show loading bar or circular loading indicator.")]
@@ -40,7 +41,7 @@ public class LoadingScreen : MonoBehaviour {
     [Tooltip("Add 1280x720 res images if it's landscape menu")]
     public Sprite[] LoadingScreenImages;
     [Tooltip("How long an image will be displayed")]
-    [Range(3f,10f)]
+    [Range(3f, 10f)]
     public float transitionDuration;
     [Tooltip("Transition Fader")]
     public Animator transitionFader;
@@ -79,10 +80,11 @@ public class LoadingScreen : MonoBehaviour {
             //using coroutine for performance
             StartCoroutine(LoadSceneProgress());
         //InvokeRepeating("fillLoadingBar", fillDelay, fillSpeed);
-       
+
     }
 
-    void init() {
+    void init()
+    {
 
         GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
 
@@ -104,7 +106,7 @@ public class LoadingScreen : MonoBehaviour {
         //else load after circular laod delay
         else
         {
-          //  enable right object
+            //  enable right object
             loadingBar.gameObject.SetActive(false);
             circularIndicator.SetActive(true);
 
@@ -123,7 +125,7 @@ public class LoadingScreen : MonoBehaviour {
         //if we have specific loading screen for the scene
         foreach (SceneSpecificLoading l in sceneSpecificLoading)
         {
-            if(l.sceneName == sceneToLoad)
+            if (l.sceneName == sceneToLoad)
             {
                 //reset the loading screen image
                 defaultLoadingScreenImage.color = Color.white;
@@ -148,7 +150,7 @@ public class LoadingScreen : MonoBehaviour {
         else
         {
             //if any image is added
-            if(LoadingScreenImages.Length > 0)
+            if (LoadingScreenImages.Length > 0)
             {
                 defaultLoadingScreenImage.color = Color.white;
                 defaultLoadingScreenImage.sprite = LoadingScreenImages[Random.Range(0, LoadingScreenImages.Length)];
@@ -164,7 +166,7 @@ public class LoadingScreen : MonoBehaviour {
 
         while (!asyncOperation.isDone && asyncOperation.progress < 0.9f)
         {
-            fillLoadingBar((int)(asyncOperation.progress*100));
+            fillLoadingBar((int)(asyncOperation.progress * 100));
             yield return null;
         }
 
@@ -179,18 +181,19 @@ public class LoadingScreen : MonoBehaviour {
 
     private void Update()
     {
-        if(tapInput && Input.anyKeyDown)
-                loadScene();
+        if (tapInput && Input.anyKeyDown)
+            loadScene();
 
     }
 
-    void RetrieveSceneToLoad() {
+    void RetrieveSceneToLoad()
+    {
 
         //if using Easy Save,
         //Integration will be done automatically
 
-        #if !EMM_ES2
-            
+#if !EMM_ES2
+
         //retrieve what scene to be loaded
         sceneToLoad = PlayerPrefs.GetString("sceneToLoad");
         //if it's null
@@ -199,7 +202,7 @@ public class LoadingScreen : MonoBehaviour {
             sceneToLoad = "MainMenu";
         }
 
-        #else
+#else
 
         if (ES2.Exists("sceneToLoad"))
         {
@@ -217,18 +220,19 @@ public class LoadingScreen : MonoBehaviour {
             sceneToLoad = "MainMenu";
         }
 
-        #endif
+#endif
 
         //delete key asap
-        #if !EMM_ES2
+#if !EMM_ES2
         PlayerPrefs.DeleteKey("sceneToLoad");
-        #else
+#else
         ES2.Delete("sceneToLoad");
-        #endif
+#endif
 
     }
 
-    void fillLoadingBar(int val) {
+    void fillLoadingBar(int val)
+    {
 
         loadingBar.value = val;
 
@@ -249,7 +253,7 @@ public class LoadingScreen : MonoBehaviour {
 
 
     #region Image Transition
-    
+
     int i = 0;
     int lastSprite = 0;
     int cacheSprite = 0;
@@ -262,39 +266,46 @@ public class LoadingScreen : MonoBehaviour {
         {
             defaultLoadingScreenImage.sprite = LoadingScreenImages[i];
 
-            if(showRandomImageTransition){
-            	cacheSprite = lastSprite;
-            	lastSprite = Random.Range(0,LoadingScreenImages.Length);
+            if (showRandomImageTransition)
+            {
+                cacheSprite = lastSprite;
+                lastSprite = Random.Range(0, LoadingScreenImages.Length);
 
-            	if(cacheSprite != lastSprite){
-           	 		defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
-            	}else
-            	{
-            		lastSprite = Random.Range(0,LoadingScreenImages.Length);
-            		defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
-            	}
-            } 
-            
-            
+                if (cacheSprite != lastSprite)
+                {
+                    defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
+                }
+                else
+                {
+                    lastSprite = Random.Range(0, LoadingScreenImages.Length);
+                    defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
+                }
+            }
+
+
             CancelInvoke("TransitionFader");
             Invoke("TransitionFader", transitionDuration - 0.5f);
             i++;
-        }else
+        }
+        else
         {
             i = 0;
             defaultLoadingScreenImage.sprite = LoadingScreenImages[i];
 
-            if(showRandomImageTransition){
-            	cacheSprite = lastSprite;
-            	lastSprite = Random.Range(0,LoadingScreenImages.Length);
+            if (showRandomImageTransition)
+            {
+                cacheSprite = lastSprite;
+                lastSprite = Random.Range(0, LoadingScreenImages.Length);
 
-            	if(cacheSprite != lastSprite){
-           	 		defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
-            	}else
-            	{
-            		lastSprite = Random.Range(0,LoadingScreenImages.Length);
-            		defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
-            	}
+                if (cacheSprite != lastSprite)
+                {
+                    defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
+                }
+                else
+                {
+                    lastSprite = Random.Range(0, LoadingScreenImages.Length);
+                    defaultLoadingScreenImage.sprite = LoadingScreenImages[lastSprite];
+                }
             }
 
 
@@ -306,7 +317,7 @@ public class LoadingScreen : MonoBehaviour {
 
     void TransitionFader()
     {
-       // Debug.Log("TransitionFader");
+        // Debug.Log("TransitionFader");
         transitionFader.Play("Transition");
     }
 
@@ -320,15 +331,17 @@ public class LoadingScreen : MonoBehaviour {
         LoadingText.SetActive(false);
     }
 
-    void loadScene() {
+    void loadScene()
+    {
         //begin fader
         Animator Fader = GameObject.Find("Fader").GetComponent<Animator>();
         Fader.GetComponent<Animator>().Play("Fader In");
         Invoke("load", 1f);
-        EasyAudioUtility.instance.Play("Background music");
+        //EasyAudioUtility.instance.Play("Background music");
     }
 
-    void load() {
+    void load()
+    {
 
         //call the event to swap music NOW
         EasyAudioUtility_SceneManager sm = FindObjectOfType<EasyAudioUtility_SceneManager>();
@@ -351,7 +364,7 @@ public class LoadingScreen : MonoBehaviour {
 
     }
 
-    
+
 }
 
 [System.Serializable]

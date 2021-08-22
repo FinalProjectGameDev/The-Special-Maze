@@ -52,10 +52,12 @@ public class MazeRenderer : MonoBehaviour
 
     public NavMeshSurface surface;
 
+    public TextAsset mazeCSV;
+
     // Start is called before the first frame update
     void Start()
     {
-        var maze = MazeGenerator.Generate();
+        var maze = MazeGenerator.Generate(mazeCSV.ToString());
         Draw(maze);
 
         surface.BuildNavMesh();

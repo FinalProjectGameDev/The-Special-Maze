@@ -152,13 +152,13 @@ public static class MazeGenerator
         return list;
     }
 
-    public static WallState[,] Generate()
+    public static WallState[,] Generate(string whole_file)
     {
         WallState[,] maze = new WallState[20, 20];
 
-        string path = @"Assets/maze3.csv";
+        //string path = @"Assets/maze3.csv";
         // Get the file's text.
-        string whole_file = System.IO.File.ReadAllText(path);
+        //string whole_file = System.IO.File.ReadAllText(path);
 
         // Split into lines.
         whole_file = whole_file.Replace('\n', '\r');
