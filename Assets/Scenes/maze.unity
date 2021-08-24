@@ -2587,7 +2587,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6d5f66926f86d304eadada78d16964b0, type: 3}
+    m_Font: {fileID: 12800000, guid: 4d961a987e869a446a78d18bda09fb1e, type: 3}
     m_FontSize: 34
     m_FontStyle: 1
     m_BestFit: 0
@@ -4207,7 +4207,7 @@ MonoBehaviour:
   Parkinson: {fileID: 903934102}
   Blindness: {fileID: 198807036}
   Wheelchair: {fileID: 5786239301747733866}
-  stepToHide: {fileID: 0}
+  stepToHide: {fileID: 71657313}
 --- !u!4 &626056620
 Transform:
   m_ObjectHideFlags: 0
@@ -4714,7 +4714,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648512043}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &662332805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8398,7 +8398,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6d5f66926f86d304eadada78d16964b0, type: 3}
+    m_Font: {fileID: 12800000, guid: a8f74dbf0f81e504bbbdf3f6063e1047, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -9091,7 +9091,7 @@ GameObject:
   - component: {fileID: 1207572871}
   - component: {fileID: 1207572870}
   - component: {fileID: 1207572869}
-  m_Layer: 18
+  m_Layer: 12
   m_Name: Text Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10078,7 +10078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1322934414
 Transform:
   m_ObjectHideFlags: 0
@@ -41898,9 +41898,8 @@ MonoBehaviour:
       impairment is in need of glasses '
     next: 0
     Prev: 0
-  - title: How to open the door?
-    description: 'Attach the handle you found, Note if your character with a visual
-      impairment is in need of glasses '
+  - title: You Win!
+    description: Well done for getting out of the maze!
     next: 0
     Prev: 0
   walkingDisabilityScenario:
@@ -41938,7 +41937,7 @@ MonoBehaviour:
     description: 'Attach the handle you found '
     next: 0
     Prev: 0
-  - title: 
+  - title: You Win!
     description: Well done for getting out of the maze!
     next: 0
     Prev: 0
@@ -41984,7 +41983,7 @@ MonoBehaviour:
     description: 'Attach the handle you found '
     next: 0
     Prev: 0
-  - title: 
+  - title: You Win!
     description: 'Well done for getting out of the maze! '
     next: 0
     Prev: 0
@@ -45887,7 +45886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5786239301747733866}
   m_LocalRotation: {x: 0.0043981965, y: 0, z: 0, w: 0.9999904}
-  m_LocalPosition: {x: -48.5, y: -0.7, z: 4.9}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6209618153790669396}
