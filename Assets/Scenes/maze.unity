@@ -39967,7 +39967,8 @@ MonoBehaviour:
     keys: {fileID: 520293059}
     keysToPlay: 69000000
   wheelchairTutorials:
-  - description: Move left with right key & move right with left key
+  - description: Move left with right key & move right with left key (Move Forword
+      By Pressing Both Together)
     keys: {fileID: 865013047330848942}
     keysToPlay: 1401000013010000
   - description: Also, you can move left & right  with A,D keys (Move Forword By
