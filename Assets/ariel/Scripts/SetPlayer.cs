@@ -27,6 +27,9 @@ public class SetPlayer : MonoBehaviour
     {
         _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
         Transform mm_player = minimap.GetComponent<Minimap>().player;
+        minimap.cullingMask &= ~(1 << LayerMask.NameToLayer("sphireMinimapD"));
+        minimap.cullingMask &= ~(1 << LayerMask.NameToLayer("sphireMinimapB"));
+
 
         switch (_currentSelectedCharName)
         {
@@ -34,6 +37,7 @@ public class SetPlayer : MonoBehaviour
                 Deaf.SetActive(true);
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Deaf.transform;
+                minimap.cullingMask |= 1 << LayerMask.NameToLayer("sphireMinimapD");
                 Deaf.GetComponent<AudioListener>().enabled = false;
                 break;
             case "Parkinson":
@@ -50,6 +54,7 @@ public class SetPlayer : MonoBehaviour
                 PostProcessLayer mmlayer = minimap.GetComponent<PostProcessLayer>();
                 mmlayer.enabled = true;
                 minimap.GetComponent<Minimap>().player = Blindness.transform;
+                minimap.cullingMask |= 1 << LayerMask.NameToLayer("sphireMinimapB");
                 Blindness.GetComponent<AudioListener>().enabled = true;
                 break;
             case "Wheelchair":

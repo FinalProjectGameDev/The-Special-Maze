@@ -58,7 +58,8 @@ namespace keypadSystem
         {
             if (onKeyboard && Input.GetKeyDown(KeyCode.K))
             {
-                ShowKeypad();
+                if (UIController.keypadIsOpen) CloseKeypad();
+                else ShowKeypad();
             }
         }
 
@@ -117,8 +118,15 @@ namespace keypadSystem
             gustyle.fontSize = 40;
             if (onKeyboard)
             {
-                GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press K to Open the Keyboard", gustyle);
-                
+                if (!UIController.keypadIsOpen)
+                {
+                    GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press K to Open the Keyboard", gustyle);
+                }
+                else
+                {
+                    GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press K to Close the Keyboard", gustyle);
+                }
+
             }
         }
     }

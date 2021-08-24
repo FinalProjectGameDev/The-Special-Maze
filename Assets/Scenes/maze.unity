@@ -2003,7 +2003,7 @@ GameObject:
   - component: {fileID: 375836643}
   - component: {fileID: 375836642}
   - component: {fileID: 375836641}
-  m_Layer: 13
+  m_Layer: 19
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2831,7 +2831,7 @@ GameObject:
   - component: {fileID: 455495058}
   - component: {fileID: 455495057}
   - component: {fileID: 455495056}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4253,7 +4253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631824751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 30, z: -0.25}
+  m_LocalPosition: {x: 0.25, y: 29.9, z: -0.25}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 8914939985652653821}
@@ -8033,7 +8033,7 @@ GameObject:
   - component: {fileID: 1053395640}
   - component: {fileID: 1053395639}
   - component: {fileID: 1053395638}
-  m_Layer: 13
+  m_Layer: 19
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10896,7 +10896,7 @@ GameObject:
   - component: {fileID: 1456839724}
   - component: {fileID: 1456839723}
   - component: {fileID: 1456839722}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39970,7 +39970,8 @@ MonoBehaviour:
   - description: Move left with right key & move right with left key
     keys: {fileID: 865013047330848942}
     keysToPlay: 1401000013010000
-  - description: Also, you can move left & right  with A,D keys
+  - description: Also, you can move left & right  with A,D keys (Move Forword By
+      Pressing Both Together)
     keys: {fileID: 865013048129259945}
     keysToPlay: 6100000064000000
   - description: Anable your mouse with the Esc key
