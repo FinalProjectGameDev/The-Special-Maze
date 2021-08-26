@@ -25,7 +25,7 @@ namespace EMM
             InitializeOptionsMenu();
 
             if (EasyAudioUtility.instance == null)
-                Instantiate(Resources.Load("Resources/EasyAudioUtility"));
+                Instantiate(Resources.Load("EasyAudioUtility"));
         }
 
         /// <summary>

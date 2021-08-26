@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour {
+public class MainMenuController : MonoBehaviour
+{
 
     Animator anim;
 
@@ -25,20 +26,21 @@ public class MainMenuController : MonoBehaviour {
     private void Awake()
     {
         if (!EasyAudioUtility.instance)
-            Instantiate(Resources.Load("Prefabs/EasyAudioUtility"));
-    
+            Instantiate(Resources.Load("EasyAudioUtility"));
+
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         anim = GetComponent<Animator>();
 
         //new key
-    #if !EMM_ES2
+#if !EMM_ES2
         PlayerPrefs.SetInt("quickSaveSlot", quickSaveSlotID);
-    #else
+#else
         ES2.Save(quickSaveSlotID, "quickSaveSlot");
-    #endif
+#endif
     }
 
     #region Open Different panels
@@ -58,7 +60,7 @@ public class MainMenuController : MonoBehaviour {
 
         //enable BLUR
         //Camera.main.GetComponent<Animator>().Play("BlurOn");
-       
+
     }
 
     public void openStartGameOptions()
@@ -76,7 +78,7 @@ public class MainMenuController : MonoBehaviour {
 
         //enable BLUR
         //Camera.main.GetComponent<Animator>().Play("BlurOn");
-        
+
     }
 
     public void openReconfig()
@@ -162,12 +164,12 @@ public class MainMenuController : MonoBehaviour {
         if (!GetComponent<LevelSelectManager>())
         {
             //loads a specific scene
-            #if !EMM_ES2
+#if !EMM_ES2
             PlayerPrefs.SetString("sceneToLoad", newGameSceneName);
-            #else
+#else
             ES2.Save(newGameSceneName, "sceneToLoad");
-            #endif
-        
+#endif
+
             //load level via fader
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeIntoLevel("LoadingScreen");
@@ -180,11 +182,11 @@ public class MainMenuController : MonoBehaviour {
         }
 
         //delete slot id
-        #if !EMM_ES2
+#if !EMM_ES2
         PlayerPrefs.DeleteKey("slotLoaded_");
-        #else
+#else
         ES2.Delete("slotLoaded_");
-        #endif
+#endif
 
     }
     #endregion
@@ -197,7 +199,7 @@ public class MainMenuController : MonoBehaviour {
         anim.Play("buttonTweenAnims_off");
 
         //disable BLUR
-       // Camera.main.GetComponent<Animator>().Play("BlurOff");
+        // Camera.main.GetComponent<Animator>().Play("BlurOff");
 
         //play click sfx
         playClickSound();
@@ -207,7 +209,7 @@ public class MainMenuController : MonoBehaviour {
     {
         //simply play anim for CLOSING main options panel
         anim.Play("OptTweenAnim_off");
-        
+
         //play click sfx
         playClickSound();
 
@@ -217,7 +219,7 @@ public class MainMenuController : MonoBehaviour {
     {
         Application.Quit();
     }
-#endregion
+    #endregion
 
     #region Sounds
     public void playHoverClip()
@@ -225,7 +227,8 @@ public class MainMenuController : MonoBehaviour {
         EasyAudioUtility.instance.Play("Hover");
     }
 
-    void playClickSound() {
+    void playClickSound()
+    {
         EasyAudioUtility.instance.Play("Click");
     }
 

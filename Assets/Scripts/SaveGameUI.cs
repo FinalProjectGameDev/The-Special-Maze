@@ -46,7 +46,7 @@ public class SaveGameUI : MonoBehaviour
     private void Awake()
     {
         if (!EasyAudioUtility.instance)
-            Instantiate(Resources.Load("Resources/EasyAudioUtility"));
+            Instantiate(Resources.Load("EasyAudioUtility"));
     }
 
     // Use this for initialization
