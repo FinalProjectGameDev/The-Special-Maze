@@ -5,7 +5,7 @@ You can play [Link]().
 ## Unity version:<br />
 2019.4.16f1
 ## How to clone the project:<br />
-If you chose to Clone the project, note that you must first run Scene [X]() and then Scene [Y]() in order for Scene [Y]() to load all the initial settings it needs.
+If you chose to Clone the project, note that you must first run Scene [MainMenu](https://github.com/FinalProjectGameDev/The-Special-Maze/blob/main/Assets/Scenes/MainMenu.unity) and then Scene [maze](https://github.com/FinalProjectGameDev/The-Special-Maze/blob/main/Assets/Scenes/maze.unity) in order for Scene maze to load all the initial settings it needs.
 ## Background on the game:
 * **Goal:** <br />
 The object of the game is to increase awareness among the target audience regarding disabilities. <br />
